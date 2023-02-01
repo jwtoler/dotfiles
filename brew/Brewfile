@@ -53,6 +53,7 @@ brew 'yarn'
 # Apps
 cask 'appcleaner'
 cask 'authy'
+cask 'bartender'
 cask 'diffmerge'
 cask 'docker'
 cask 'dropbox'
