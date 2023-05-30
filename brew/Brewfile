@@ -27,6 +27,7 @@ brew 'openssl'
 brew 'pkg-config' 						# https://github.com/driesvints/dotfiles/issues/20
 brew 'pyenv'  							# Python version management
 brew 'svn'								# Needed to install fonts
+brew 'symfony-cli/tap/symfony-cli'
 brew 'terminal-notifier' 				# Send macOS User Notifications from the command-line
 brew 'telnet'
 brew 'tree'								# List the contents of directories in an intuitive way
