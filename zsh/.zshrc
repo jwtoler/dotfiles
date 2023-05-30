@@ -5,6 +5,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+fpath+=$DOTFILES/zsh/.zshfunctions
+
 for module in $(ls $DOTFILES/zsh/*.zsh); do
   source $module
 done
