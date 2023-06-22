@@ -1,0 +1,49 @@
+tap "homebrew/cask"
+tap "homebrew/cask-drivers"
+tap "homebrew/cask-fonts"
+tap "homebrew/cask-versions"
+
+# Apps
+cask 'appcleaner'
+cask 'authy'
+cask 'bartender'
+cask 'devtoys'
+cask 'diffmerge'
+cask 'docker'
+cask 'dropbox'
+cask 'firefox'
+cask 'font-hack'
+cask 'gitup'
+cask 'gpg-suite'
+cask 'google-chrome'
+cask 'handbrake'
+cask 'iterm2'
+brew 'nextcloud'
+cask 'notion'
+cask 'pastebot'
+cask 'phpmon'
+cask 'postman'
+cask 'raycast'
+cask 'sequel-ace'
+cask 'sublime-text'
+cask 'the-unarchiver'
+cask 'transmission'
+cask 'transmit'
+cask 'visual-studio-code'
+cask 'vlc'
+cask 'zoom'
+
+
+# Quicklook
+cask 'qlmarkdown'
+cask 'quicklook-json'
+
+
+# Fonts
+cask 'font-lato'
+cask 'font-open-sans'
+cask 'font-roboto'
+cask 'font-source-code-pro-for-powerline'
+cask 'font-source-code-pro'
+cask 'font-source-sans-pro'
+cask 'font-source-serif-pro'

@@ -30,6 +30,9 @@
 \#*\#
 \.#*
 .ipynb_checkpoints/
+.idea/
+.vscode
+.vagrant/
 
 # Logs and databases #
 ######################
@@ -44,9 +47,7 @@
 ._*
 .Spotlight-V100
 .Trashes
+Desktop.ini
 Icon?
 ehthumbs.db
 Thumbs.db
-.idea/
-.vscode
-.vagrant/
