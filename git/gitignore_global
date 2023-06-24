@@ -20,15 +20,16 @@
 *.tar
 *.zip
 
+# Swap #
+########
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+
 # Editing tools and IDEs #
 ##########################
-.sw[a-p]
-[._]*.sw[a-p]
-[._]*.s[a-v][a-z]
-*~
-~*
-\#*\#
-\.#*
+Session.vim
 .ipynb_checkpoints/
 .idea/
 .vscode

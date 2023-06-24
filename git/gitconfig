@@ -190,6 +190,8 @@
 
 [include]
 
+	path = ~/.gitconfig.user
+
     # Load local configs.
     # https://git-scm.com/docs/git-config#_includes
     #
