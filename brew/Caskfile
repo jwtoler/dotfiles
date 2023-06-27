@@ -42,6 +42,7 @@ cask 'quicklook-json'
 
 
 # Fonts
+cask 'font-hack-nerd-font'
 cask 'font-lato'
 cask 'font-open-sans'
 cask 'font-roboto'

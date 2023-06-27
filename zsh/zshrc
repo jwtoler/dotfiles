@@ -37,6 +37,9 @@ _load_settings() {
 }
 _load_settings "$HOME/.zsh/config"
 
+# iTerm Integration
+source ~/.iterm2_shell_integration.zsh
+
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
