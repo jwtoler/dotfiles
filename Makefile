@@ -45,10 +45,12 @@ link:
 		mv -v $(HOME)/$$FILE{,.bak}; fi; done
 	$(BIN)/stow -t $(HOME) runcom
 	$(BIN)/stow -t $(HOME) git
+	$(BIN)/stow -t $(HOME) mackup
 
 unlink: 
 	$(BIN)/stow --delete -t $(HOME) runcom
 	$(BIN)/stow --delete -t $(HOME) git
+	$(BIN)/stow --delete -t $(HOME) mackup
 	for FILE in $$(\ls -A runcom); do if [ -f $(HOME)/$$FILE.bak ]; then \
 		mv -v $(HOME)/$$FILE.bak $(HOME)/$${FILE%%.bak}; fi; done
 	for FILE in $$(\ls -A git); do if [ -f $(HOME)/$$FILE.bak ]; then \
