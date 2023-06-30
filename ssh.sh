@@ -36,10 +36,10 @@ eval "$(ssh-agent -s)"
 
 # create config file if it doesn't exist
 touch ~/.ssh/config
-printf "Host *\n AddKeysToAgent yes\n UseKeychain yes\n IdentityFile ~/.ssh/id_ed25519" | tee ~/.ssh/config
+printf "Host *\n AddKeysToAgent yes\n UseKeychain yes\n IdentityFile ~/.ssh/id_ed25519\n" | tee ~/.ssh/config
 
 # add ssh key
-sudo ssh-add -K "${HOME}"/.ssh/id_ed25519
+sudo ssh-add "${HOME}"/.ssh/id_ed25519
 
 # print public key to add
 echo "SSH Key created and added to agent. Add public key to remote (GitHub, GitLab, etc.)"
