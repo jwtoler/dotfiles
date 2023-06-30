@@ -45,7 +45,7 @@ link:
 		mv -v $(HOME)/$$FILE{,.bak}; fi; done
 	$(BIN)/stow -t $(HOME) runcom
 	$(BIN)/stow -t $(HOME) git
-`m
+
 unlink: 
 	$(BIN)/stow --delete -t $(HOME) runcom
 	$(BIN)/stow --delete -t $(HOME) git
