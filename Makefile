@@ -11,7 +11,7 @@ BIN 			:= $(HOMEBREW_PREFIX)/bin
 
 all: $(OS)
 
-macos: sudo core-macos brew packages iterm link
+macos: sudo core-macos brew packages ohmyzsh iterm link
 	@$(DOTFILES_DIR)/macos/dock.sh
 	@$(DOTFILES_DIR)/macos/defaults.sh
 
@@ -62,7 +62,6 @@ packages: brew
 	$(BIN)/brew bundle --file=$(DOTFILES_DIR)/brew/Brewfile || true
 	$(BIN)/brew bundle --file=$(DOTFILES_DIR)/brew/Caskfile || true
 	for EXT in $$(cat vscode/Codefile); do code --install-extension $$EXT; done
-	ohmyzsh
 
 sudo:
 ifndef GITHUB_ACTION
