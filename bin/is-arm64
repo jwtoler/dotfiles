@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
 if [[ "$(uname -m)" == "arm64" ]]; then
+  echo "CPU is not ARM64";
   exit 0
 else
+  echo "CPU is ARM64";
   exit 1
 fi

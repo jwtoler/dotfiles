@@ -17,6 +17,9 @@ prepend-path "$DOTFILES_DIR/bin"
 prepend-path "/sbin"
 prepend-path "/usr/sbin"
 
+if command $DOTFILES_DIR/bin/is-macos > /dev/null; then
+    prepend-path "~/Library/Application Support/JetBrains/Toolbox/scripts"
+
 # Remove duplicates (preserving prepended items)
 # Source: http://unix.stackexchange.com/a/40755
 PATH=$(echo -n $PATH | awk -v RS=: '{ if (!arr[$0]++) {printf("%s%s",!ln++?"":":",$0)}}')

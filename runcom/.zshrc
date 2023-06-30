@@ -1,12 +1,12 @@
 # Location of this repository
-DOTFILES="$HOME/dotfiles"
+DOTFILES="$HOME/.dotfiles"
 
 # Load custom executable functions
-for function in ~/.zsh/functions/*; do
+for function in "$DOTFILES/zsh/functions/*"; do
   source $function
 done
 
-# Extra files in ~/.zsh/config/pre , ~/.zsh/config , and ~/.zsh/config/post
+# Extra files in ~/.dotfiles/zsh/config/pre , ~/.dotfiles/zsh/config/ , and ~/.dotfiles/zsh/config/post
 # these are loaded first, second, and third, respectively.
 _load_settings() {
   _dir="$1"
@@ -35,7 +35,7 @@ _load_settings() {
     fi
   fi
 }
-_load_settings "$HOME/.zsh/config"
+_load_settings "$DOTFILES/zsh/config"
 
 # iTerm Integration
 source ~/.iterm2_shell_integration.zsh
@@ -44,4 +44,4 @@ source ~/.iterm2_shell_integration.zsh
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
 # Aliases
-[[ -f ~/.aliases ]] && source ~/.aliases
+[[ -f ~/.aliases ]] && source "$DOTFILES/zsh/.aliases"

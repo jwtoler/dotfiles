@@ -7,6 +7,7 @@ tap 'nicoverbruggen/homebrew-cask'
 # Binaries
 brew 'ant'
 brew 'bash' 							# Latest Bash version
+brew 'bats-core'
 brew 'coreutils' 						# Those that come with macOS are outdated
 brew 'curl'
 brew 'exa'  							# Modern replacement for 'ls'
@@ -39,6 +40,7 @@ brew 'zsh-syntax-highlighting'
 
 # Development
 brew 'composer'
+brew 'fnm'
 brew 'mysql'
 brew 'node'
 brew 'php'
