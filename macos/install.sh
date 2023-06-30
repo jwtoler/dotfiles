@@ -6,7 +6,7 @@ fi
 ###############################################################################
 # MacOS Software updates                                                      #
 ###############################################################################
-echo "› sudo softwareupdate -i -a"
+echo "› sudo softwareupdate -aiR"
 sudo softwareupdate -aiR
 xcode-select --install
 

@@ -52,7 +52,7 @@ unlink:
 	$(BIN)/stow --delete -t $(HOME) git
 	for FILE in $$(\ls -A runcom); do if [ -f $(HOME)/$$FILE.bak ]; then \
 		mv -v $(HOME)/$$FILE.bak $(HOME)/$${FILE%%.bak}; fi; done
-	or FILE in $$(\ls -A git); do if [ -f $(HOME)/$$FILE.bak ]; then \
+	for FILE in $$(\ls -A git); do if [ -f $(HOME)/$$FILE.bak ]; then \
 		mv -v $(HOME)/$$FILE.bak $(HOME)/$${FILE%%.bak}; fi; done
 
 oh-my-zsh:
