@@ -7,6 +7,8 @@ else
   compinit -C;
 fi;
 
+_comp_options+=(globdots)       # Include hidden files.
+
 # disable zsh bundled function mtools command mcd
 # which causes a conflict.
 compdef -d mcd

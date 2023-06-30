@@ -5,7 +5,8 @@ OS 				:= $(shell bin/is-supported bin/is-macos macos linux)
 HOMEBREW_PREFIX := $(shell bin/is-supported bin/is-macos $(shell bin/is-supported bin/is-arm64 /opt/homebrew /usr/local) /home/linuxbrew/.linuxbrew)
 SHELLS 			:= /private/etc/shells
 BIN 			:= $(HOMEBREW_PREFIX)/bin
-OHMYZSH                 := $(HOME)/.oh-my-zsh
+OHMYZSH         := $(HOME)/.oh-my-zsh
+ZSH_CUSTOM		:= $(OHMYZSH)/custom
 
 .PHONY: brew macos linux core-macos core-linux link unlink
 
@@ -59,6 +60,14 @@ unlink:
 $(OHMYZSH):
 	@printf "Installing Oh My Zsh..."
 	sh -c "$$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+	@printf "Clonning alias-tips..."
+	git clone https://github.com/djui/alias-tips.git $(ZSH_CUSTOM)/plugins/alias-tips
+	@printf "Clonning zsh-autosuggestions..."
+	git clone https://github.com/zsh-users/zsh-autosuggestions $(ZSH_CUSTOM)/plugins/zsh-autosuggestions
+	@printf "Clonning zsh-syntax-highlighting..."
+	git clone https://github.com/zsh-users/zsh-syntax-highlighting $(ZSH_CUSTOM)/plugins/zsh-syntax-highlighting
+	@printf "Clonning powerlevel10k..."
+	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $(ZSH_CUSTOM)/themes/powerlevel10k
 
 packages: brew
 	$(BIN)/brew bundle --file=$(DOTFILES_DIR)/brew/Brewfile || true
