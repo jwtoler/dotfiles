@@ -42,6 +42,8 @@ iterm:
 link: 
 	for FILE in $$(\ls -A runcom); do if [ -f $(HOME)/$$FILE -a ! -h $(HOME)/$$FILE ]; then \
 		mv -v $(HOME)/$$FILE{,.bak}; fi; done
+	for FILE in $$(\ls -A git); do if [ -f $(HOME)/$$FILE -a ! -h $(HOME)/$$FILE ]; then \
+		mv -v $(HOME)/$$FILE{,.bak}; fi; done
 	$(BIN)/stow -t $(HOME) runcom
 	$(BIN)/stow -t $(HOME) git
 
@@ -49,6 +51,8 @@ unlink:
 	$(BIN)/stow --delete -t $(HOME) runcom
 	$(BIN)/stow --delete -t $(HOME) git
 	for FILE in $$(\ls -A runcom); do if [ -f $(HOME)/$$FILE.bak ]; then \
+		mv -v $(HOME)/$$FILE.bak $(HOME)/$${FILE%%.bak}; fi; done
+	or FILE in $$(\ls -A git); do if [ -f $(HOME)/$$FILE.bak ]; then \
 		mv -v $(HOME)/$$FILE.bak $(HOME)/$${FILE%%.bak}; fi; done
 
 oh-my-zsh:
