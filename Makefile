@@ -45,7 +45,7 @@ link:
 	$(BIN)/stow -t $(HOME) runcom
 	$(BIN)/stow -t $(HOME) git
 
-unlink: stow-$(OS)
+unlink: 
 	$(BIN)/stow --delete -t $(HOME) runcom
 	$(BIN)/stow --delete -t $(HOME) git
 	for FILE in $$(\ls -A runcom); do if [ -f $(HOME)/$$FILE.bak ]; then \
@@ -55,8 +55,7 @@ oh-my-zsh:
 	@printf "Installing Oh My Zsh...";
 	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-packages:
-	brew
+packages: brew
 	$(BIN)/brew bundle --file=$(DOTFILES_DIR)/brew/Brewfile || true
 	$(BIN)/brew bundle --file=$(DOTFILES_DIR)/brew/Caskfile || true
 	for EXT in $$(cat vscode/Codefile); do code --install-extension $$EXT; done
