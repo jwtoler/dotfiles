@@ -36,6 +36,9 @@ core-linux:
 	apt-get dist-upgrade -f
 	is-executable stow || apt-get -y install stow
 
+composer-packages:
+	$(BIN)/composer global require laravel/installer laravel/valet 
+
 iterm:
 	curl -L https://iterm2.com/shell_integration/zsh -o ~/.iterm2_shell_integration.zsh
 
