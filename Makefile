@@ -28,7 +28,6 @@ endif
 core-macos:
 	@$(DOTFILES_DIR)/macos/install.sh
 	is-executable stow || brew install stow
-	oh-my-zsh
 
 core-linux:
 	apt-get update
@@ -46,7 +45,7 @@ link:
 		mv -v $(HOME)/$$FILE{,.bak}; fi; done
 	$(BIN)/stow -t $(HOME) runcom
 	$(BIN)/stow -t $(HOME) git
-
+`m
 unlink: 
 	$(BIN)/stow --delete -t $(HOME) runcom
 	$(BIN)/stow --delete -t $(HOME) git
@@ -56,13 +55,14 @@ unlink:
 		mv -v $(HOME)/$$FILE.bak $(HOME)/$${FILE%%.bak}; fi; done
 
 oh-my-zsh:
-	@printf "Installing Oh My Zsh...";
-	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+	@printf "Installing Oh My Zsh..."
+	sh -c "$$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 packages: brew
 	$(BIN)/brew bundle --file=$(DOTFILES_DIR)/brew/Brewfile || true
 	$(BIN)/brew bundle --file=$(DOTFILES_DIR)/brew/Caskfile || true
 	for EXT in $$(cat vscode/Codefile); do code --install-extension $$EXT; done
+	ohmyzsh
 
 sudo:
 ifndef GITHUB_ACTION
