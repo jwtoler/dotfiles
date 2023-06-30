@@ -59,6 +59,5 @@ brew "webp"
 
 # Mac App Store
 mas 'Amphetamine',  id: 937984704
-mas 'Fantastical',  id: 975937182 
 mas 'Spark', 		id: 1176895641
 mas 'Speedtest', 	id: 1153157709
