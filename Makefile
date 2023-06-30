@@ -56,7 +56,7 @@ unlink:
 
 ohmyzsh:
 	@printf "Installing Oh My Zsh..."
-	sh -c "$$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+	sh -c "$$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
 packages: brew
 	$(BIN)/brew bundle --file=$(DOTFILES_DIR)/brew/Brewfile || true
