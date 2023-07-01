@@ -27,6 +27,8 @@ else
 endif
 
 core-macos: | $(OHMYZSH)
+	curl -L https://github.com/kcrawford/dockutil/releases/download/3.0.2/dockutil-3.0.2.pkg -o $(HOME)/dockutil.pkg
+	sudo installer -pkg $(HOME)/dockutil.pkg -target / && rm $(HOME)/dockutil.pkg
 	@$(DOTFILES_DIR)/macos/install.sh
 	is-executable stow || brew install stow
 

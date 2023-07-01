@@ -10,7 +10,6 @@ brew 'bash' 							# Latest Bash version
 brew 'bats-core'
 brew 'coreutils' 						# Those that come with macOS are outdated
 brew 'curl'
-brew 'dockutil'                         # Utility for managing macOS dock items
 brew 'exa'  							# Modern replacement for 'ls'
 brew 'fd'								# Simple, fast and user-friendly alternative to find
 brew 'gh'
