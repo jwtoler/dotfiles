@@ -2,7 +2,7 @@
 # Retrieve it from getconf, otherwise it's just current $PATH
 is-executable getconf && PATH=$($(command -v getconf) PATH)
 
-export HOMEBREW_PREFIX=$($DOTFILES_DIR/bin/is-supported $DOTFILES_DIR/bin/is-arm64 /opt/homebrew /usr/local)
+export HOMEBREW_PREFIX=$($DOTFILES/bin/is-supported $DOTFILES/bin/is-arm64 /opt/homebrew /usr/local)
 
 # Prepend new items to path (if directory exists)
 prepend-path "/bin"
@@ -13,11 +13,11 @@ prepend-path "$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin"
 prepend-path "$HOMEBREW_PREFIX/opt/gnu-sed/libexec/gnubin"
 prepend-path "$HOMEBREW_PREFIX/opt/grep/libexec/gnubin"
 prepend-path "$HOMEBREW_PREFIX/opt/python/libexec/bin"
-prepend-path "$DOTFILES_DIR/bin"
+prepend-path "$DOTFILES/bin"
 prepend-path "/sbin"
 prepend-path "/usr/sbin"
 
-if command $DOTFILES_DIR/bin/is-macos > /dev/null; then
+if command $DOTFILES/bin/is-macos > /dev/null; then
     prepend-path "~/Library/Application Support/JetBrains/Toolbox/scripts"
 
 # Remove duplicates (preserving prepended items)

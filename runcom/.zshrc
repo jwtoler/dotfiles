@@ -40,8 +40,8 @@ _load_settings "$DOTFILES/zsh/config"
 # iTerm Integration
 source ~/.iterm2_shell_integration.zsh
 
+# Aliases
+[[ -f "$DOTFILES/zsh/.aliases" ]] && source "$DOTFILES/zsh/.aliases"
+
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
-
-# Aliases
-[[ -f ~/.aliases ]] && source "$DOTFILES/zsh/.aliases"
