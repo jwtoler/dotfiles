@@ -11,7 +11,7 @@ ZSH_CUSTOM		:= $(OHMYZSH)/custom
 
 all: $(OS)
 
-macos: sudo core-macos brew packages iterm link
+macos: sudo core-macos brew packages vscode-ext iterm link
 	@$(DOTFILES_DIR)/macos/dock.sh
 	@$(DOTFILES_DIR)/macos/defaults.sh
 
@@ -75,7 +75,9 @@ $(OHMYZSH):
 packages: brew
 	$(BIN)/brew bundle --file=$(DOTFILES_DIR)/brew/Brewfile || true
 	$(BIN)/brew bundle --file=$(DOTFILES_DIR)/brew/Caskfile || true
-	for EXT in $$(cat vscode/Codefile); do code --install-extension $$EXT; done
+
+vscode-ext:
+	cat ${DOTFILES_DIR}/vscode/Codefile | xargs -L 1 code --force --install-extension
 
 sudo:
 ifndef GITHUB_ACTION
