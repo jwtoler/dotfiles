@@ -8,7 +8,6 @@ BIN 			:= $(HOMEBREW_PREFIX)/bin
 OHMYZSH         := $(HOME)/.oh-my-zsh
 ZSH_CUSTOM		:= $(OHMYZSH)/custom
 
-.PHONY: brew macos linux core-macos core-linux link unlink
 
 all: $(OS)
 
@@ -27,8 +26,7 @@ else
 endif
 
 core-macos: | $(OHMYZSH)
-	curl -L https://github.com/kcrawford/dockutil/releases/download/3.0.2/dockutil-3.0.2.pkg -o $(HOME)/dockutil.pkg
-	sudo installer -pkg $(HOME)/dockutil.pkg -target / && rm $(HOME)/dockutil.pkg
+	@$(DOTFILES_DIR)/dockutil/install.sh
 	@$(DOTFILES_DIR)/macos/install.sh
 	is-executable stow || brew install stow
 
@@ -98,3 +96,5 @@ help:
 	  make         Install all configurations and applications.\\n\
 	\\n\
 	"
+
+.PHONY: brew macos linux core-macos core-linux link unlink
