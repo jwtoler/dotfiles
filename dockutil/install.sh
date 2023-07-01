@@ -9,10 +9,10 @@
 
 echo "  Installing Dockutil..."
 
-curl -L https://github.com/kcrawford/dockutil/releases/download/3.0.2/dockutil-3.0.2.pkg -o $(HOME)/dockutil.pkg
-sudo installer -pkg $(HOME)/dockutil.pkg -target /
+curl -L https://github.com/kcrawford/dockutil/releases/download/3.0.2/dockutil-3.0.2.pkg -o /tmp/dockutil.pkg
+sudo installer -pkg /tmp/dockutil.pkg -target /
 
 # cleanup
-rm $(HOME)/dockutil.pkg
+rm /tmp/dockutil.pkg
 
 exit 0
