@@ -141,7 +141,7 @@ defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
 
 # Show hidden files and file extensions by default
 defaults write com.apple.finder AppleShowAllFiles -bool true
-defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+defaults write NSGlobalDomain AppleShowAllExtensions -bool false
 
 # Avoid creating .DS_Store files on network or USB volumes
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
@@ -300,12 +300,19 @@ defaults write com.googlecode.iterm2 PromptOnQuit -bool false
 # Transmission.app                                                            #
 ###############################################################################
 
-# Use `~/Documents/Torrents` to store incomplete downloads
+# Use `~/Torrents/Incomplete` to store incomplete downloads
 defaults write org.m0k.transmission UseIncompleteDownloadFolder -bool true
-defaults write org.m0k.transmission IncompleteDownloadFolder -string "${HOME}/Documents/Torrents"
+defaults write org.m0k.transmission IncompleteDownloadFolder -string "~/Torrents/Incomplete"
 
-# Use `~/Downloads` to store completed downloads
+# Hide `~/Torrents/Incomplete` downloads folder
+mkdir -p ~/Torrents/Incomplete
+sudo chflags -h hidden ~/Torrents/Incomplete
+
+# Use `~/Torrents/Complete` to store completed downloads
+mkdir -p ~/Torrents/Complete
 defaults write org.m0k.transmission DownloadLocationConstant -bool true
+defaults write org.m0k.transmission DownloadChoice -string "Constant"
+defaults write org.m0k.transmission DownloadFolder -string "~/Torrents/Complete"
 
 # Don’t prompt for confirmation before downloading
 defaults write org.m0k.transmission DownloadAsk -bool false
@@ -318,9 +325,9 @@ defaults write org.m0k.transmission CheckRemoveDownloading -bool true
 defaults write org.m0k.transmission DeleteOriginalTorrent -bool true
 
 # Hide the donate message
-defaults write org.m0k.transmission WarningDonate -bool true
+defaults write org.m0k.transmission WarningDonate -bool false
 # Hide the legal disclaimer
-defaults write org.m0k.transmission WarningLegal -bool true
+defaults write org.m0k.transmission WarningLegal -bool false
 
 # IP block list.
 # Source: https://giuliomac.wordpress.com/2014/02/19/best-blocklist-for-transmission/
