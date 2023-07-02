@@ -52,6 +52,12 @@ sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo Hos
 # Use AirDrop over every interface.
 defaults write com.apple.NetworkBrowser BrowseAllInterfaces 1
 
+# Sidebar icon size
+# Small  : 1
+# Medium : 2
+# Large  : 3
+defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 1
+
 
 
 ###############################################################################
@@ -95,14 +101,47 @@ defaults write com.apple.commerce AutoUpdate -bool true
 
 
 ###############################################################################
-# Dock & Dashboard		                                   			          #
+# Mission Control (Dashboard)		                              			          #
 ###############################################################################
 
-#  Disable Dashboard
+# Disable Dashboard
 defaults write com.apple.dashboard mcx-disabled -bool true
 
-# Wipe all (default) app icons from the Dock
-defaults write com.apple.dock persistent-apps -array
+# Dashboard:
+# 1: Off
+# 2: As Space
+# 3: As Overlay
+defaults write com.apple.dashboard enabled-state -int 1
+
+# Don’t show Dashboard as a Space
+defaults write com.apple.dock dashboard-in-overlay -bool true
+
+# Enable Dashboard dev mode (allows keeping widgets on the desktop)
+defaults write com.apple.dashboard devmode -bool true
+
+
+
+###############################################################################
+# Dock                       		                              			          #
+###############################################################################
+
+# Icon size of Dock items
+defaults write com.apple.dock tilesize -int 46
+
+# Lock the Dock size
+defaults write com.apple.dock size-immutable -bool true
+
+# Dock magnification
+defaults write com.apple.dock magnification -bool false
+
+# Icon size of magnified Dock items
+defaults write com.apple.dock largesize -int 64
+
+# Dock orientation: 'left', 'bottom', 'right'
+defaults write com.apple.dock 'orientation' -string 'left'
+
+# Automatically hide and show the Dock
+defaults write com.apple.dock autohide -bool true
 
 # Remove the auto-hiding Dock delay
 defaults write com.apple.dock autohide-delay -float 0
@@ -110,11 +149,11 @@ defaults write com.apple.dock autohide-delay -float 0
 # Remove the animation when hiding/showing the Dock
 defaults write com.apple.dock autohide-time-modifier -float 0
 
-# Automatically hide and show the Dock
-defaults write com.apple.dock autohide -bool true
-
 # Make Dock icons of hidden applications translucent
 defaults write com.apple.dock showhidden -bool true
+
+# Wipe all (default) app icons from the Dock
+defaults write com.apple.dock persistent-apps -array
 
 
 
@@ -297,6 +336,22 @@ defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 ###############################################################################
 # Photos                                                                      #
 ###############################################################################
+
+# Startup (with iCloud Photos selected)
+defaults write com.apple.Photos IPXDefaultDidPromoteiCloudPhotosInGettingStarted -bool true
+defaults write com.apple.Photos IPXDefaultHasBeenLaunched -bool true
+defaults write com.apple.Photos IPXDefaultHasChosenToEnableiCloudPhotosInGettingStarted = 1;
+
+# Summarize photos
+# You can choose compast, summarized views for Collections and Years
+defaults write com.apple.Photos IPXDefaultPhotosSummarizePhotos -bool true
+
+# Copy items to the Photos library
+# Only items copied to the library will upload to iCloud Photo library (when disabled)
+defaults write com.apple.Photos IPXDefaultImportUseReferencedImport -bool false
+
+# Include location information for published items
+defaults write com.apple.Photos IPXDefaultPlacesPublishPlaceInfo -bool false
 
 # Prevent Photos from opening automatically when devices are plugged in
 defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true

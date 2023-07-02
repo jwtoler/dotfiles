@@ -12,7 +12,6 @@ alias zshedit="edit ~/.zshrc"
 alias aliases="alias | sed 's/=.*//'"
 alias functions="declare -f | grep '^[a-z].* ()' | sed 's/{$//'"
 alias paths='echo -e ${PATH//:/\\n}'
-alias python="/opt/homebrew/bin/python3"
 
 # Directory listing/traversal
 LS_COLORS=$($DOTFILES/bin/is-supported "ls --color" --color -G)
