@@ -20,6 +20,7 @@ hash pip 2>/dev/null || echo "Please install pip before continuing"
 
 pip_packages=(
   pip
+  finder-sidebar-editor
   fonttools
   qtfaststart
   dnsyo
