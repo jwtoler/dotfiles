@@ -152,10 +152,6 @@ defaults write com.apple.dock autohide-time-modifier -float 0
 # Make Dock icons of hidden applications translucent
 defaults write com.apple.dock showhidden -bool true
 
-# Wipe all (default) app icons from the Dock
-defaults write com.apple.dock persistent-apps -array
-
-
 
 ###############################################################################
 # Finder                                                                      #
@@ -221,11 +217,19 @@ defaults write com.google.Chrome.canary PMPrintingExpandedStateForPrint2 -bool t
 ###############################################################################
 # Keyboard & Trackpad                                                         #
 ###############################################################################
+
 # use keyboard navigation to move focus between controls (tab-tab for everything)
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
-# Set a blazingly fast keyboard repeat rate
+# Set key repeat rate (minimum 1)
+# Off: 300000
+# Slow: 120
+# Fast: 2
 defaults write NSGlobalDomain KeyRepeat -int 2
+
+# Set delay until repeat (in milliseconds)
+# Long: 120
+# Short: 15
 defaults write NSGlobalDomain InitialKeyRepeat -int 15
 
 # Trackpad: enable tap to click for this user and for the login screen
@@ -325,8 +329,35 @@ sudo mdutil -E / > /dev/null
 
 
 ###############################################################################
+# SSD Optimizations                                                           #
+###############################################################################
+
+# Disable hard disk sleep
+sudo pmset -a disksleep 0
+
+# Disable hibernation (speeds up entering sleep mode)
+sudo pmset -a hibernatemode 0
+
+# Set hibernatefile to `/dev/null` so it will not be recreated
+sudo pmset -a hibernatefile /dev/null
+# Remove the sleep image file to save disk space
+sudo rm /private/var/vm/sleepimage
+# Create a zero-byte file instead…
+sudo touch /private/var/vm/sleepimage
+# …and make sure it can't be rewritten
+sudo chflags uchg /private/var/vm/sleepimage
+
+# Disable the sudden motion sensor as it’s not useful for SSDs
+sudo pmset -a sms 0
+
+
+
+###############################################################################
 # Time Machine                                                                #
 ###############################################################################
+
+# Disable local Time Machine snapshots
+hash tmutil &> /dev/null && sudo tmutil disablelocal
 
 # Prevent Time Machine from prompting to use new hard drives as backup volume
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
@@ -408,6 +439,15 @@ defaults write org.m0k.transmission BlocklistAutoUpdate -bool true
 
 # Randomize port on launch
 defaults write org.m0k.transmission RandomPort -bool true
+
+
+###############################################################################
+# Extensions                                                                  #
+###############################################################################
+
+# Set Sublime Text as default plain text editor
+duti -s com.sublimetext.3 public.plain-text all
+duti -s com.sublimetext.3 net.daringfireball.markdown all
 
 
 
