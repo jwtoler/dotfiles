@@ -29,7 +29,7 @@ _load_settings() {
     done
 
     if [ -d "$_dir/post" ]; then
-      for config in "$_dir"/post/**/*~*.zwc(N-.); do
+      for config in "$_dir"/post/*; do
         source $config
       done
     fi
