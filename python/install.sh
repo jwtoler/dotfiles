@@ -30,5 +30,5 @@ pip_packages=(
 # Loop through each package individally because
 # any errors will stop all installations
 for package in "${pip_packages[@]}"; do
-  pip install --upgrade "$package" --user
+  pip install -q --upgrade "$package" --user
 done

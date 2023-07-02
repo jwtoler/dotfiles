@@ -11,7 +11,7 @@ ZSH_CUSTOM		:= $(OHMYZSH)/custom
 
 all: $(OS)
 
-macos: sudo core-macos brew packages vscode-ext iterm link
+macos: sudo core-macos brew packages vscode-ext python iterm link
 	@$(DOTFILES_DIR)/macos/dock.sh
 	@$(DOTFILES_DIR)/macos/defaults.sh
 
@@ -60,6 +60,25 @@ unlink:
 	for FILE in $$(\ls -A git); do if [ -f $(HOME)/$$FILE.bak ]; then \
 		mv -v $(HOME)/$$FILE.bak $(HOME)/$${FILE%%.bak}; fi; done
 
+packages: brew
+	$(BIN)/brew bundle --file=$(DOTFILES_DIR)/brew/Brewfile || true
+	$(BIN)/brew bundle --file=$(DOTFILES_DIR)/brew/Caskfile || true
+	curl -L "https://packagecontrol.io/Package%20Control.sublime-package" \
+		-o /Users/justin/Library/Application\ Support/Sublime\ Text/Installed\ Packages/Package\ Control.sublime-package
+
+python: brew
+	is-executable pyenv || brew install pyenv
+	@$(DOTFILES_DIR)/python/install.sh
+
+vscode-ext:
+	cat ${DOTFILES_DIR}/vscode/Codefile | xargs -L 1 code --force --install-extension
+
+sudo:
+ifndef GITHUB_ACTION
+	sudo -v
+	while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+endif
+
 $(OHMYZSH):
 	@printf "Installing Oh My Zsh..."
 	sh -c "$$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
@@ -71,21 +90,6 @@ $(OHMYZSH):
 	git clone https://github.com/zsh-users/zsh-syntax-highlighting $(ZSH_CUSTOM)/plugins/zsh-syntax-highlighting
 	@printf "Clonning powerlevel10k..."
 	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $(ZSH_CUSTOM)/themes/powerlevel10k
-
-packages: brew
-	$(BIN)/brew bundle --file=$(DOTFILES_DIR)/brew/Brewfile || true
-	$(BIN)/brew bundle --file=$(DOTFILES_DIR)/brew/Caskfile || true
-	curl -L "https://packagecontrol.io/Package%20Control.sublime-package" \
-		-o /Users/justin/Library/Application\ Support/Sublime\ Text/Installed\ Packages/Package\ Control.sublime-package
-
-vscode-ext:
-	cat ${DOTFILES_DIR}/vscode/Codefile | xargs -L 1 code --force --install-extension
-
-sudo:
-ifndef GITHUB_ACTION
-	sudo -v
-	while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
-endif
 
 
 help:
