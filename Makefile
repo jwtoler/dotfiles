@@ -75,6 +75,8 @@ $(OHMYZSH):
 packages: brew
 	$(BIN)/brew bundle --file=$(DOTFILES_DIR)/brew/Brewfile || true
 	$(BIN)/brew bundle --file=$(DOTFILES_DIR)/brew/Caskfile || true
+	curl -L "https://packagecontrol.io/Package%20Control.sublime-package" \
+		-o /Users/justin/Library/Application\ Support/Sublime\ Text/Installed\ Packages/Package\ Control.sublime-package
 
 vscode-ext:
 	cat ${DOTFILES_DIR}/vscode/Codefile | xargs -L 1 code --force --install-extension

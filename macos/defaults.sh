@@ -131,8 +131,14 @@ defaults write com.apple.finder ShowPathbar -bool true
 # Allow text-selection in Quick Look
 defaults write com.apple.finder QLEnableTextSelection -bool true
 
-# Use list view in all Finder windows by default
-# View modes: `Nlsv`, `icnv`, `clmv`, `Flwv`
+# Preferred view style
+# Icon View   : `icnv`
+# List View   : `Nlsv`
+# Column View : `clmv`
+# Cover Flow  : `Flwv`
+# After configuring preferred view style, clear all `.DS_Store` files
+# to ensure settings are applied for every directory
+sudo find / -name ".DS_Store" --delete
 defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 
 # Set the Finder prefs for showing a few different volumes on the Desktop.
@@ -147,11 +153,21 @@ defaults write NSGlobalDomain AppleShowAllExtensions -bool false
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 
+# Expand the following File Info panes
+defaults write com.apple.finder FXInfoPanesExpanded -dict \
+    General -bool true \
+    OpenWith -bool true \
+    Privileges -bool true
+
 
 
 ###############################################################################
 # Google Chrome                                                               #
 ###############################################################################
+
+# Disable backswipe
+defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool false
+defaults write com.google.Chrome.canary AppleEnableSwipeNavigateWithScrolls -bool false
 
 # Use the system-native print preview dialog
 defaults write com.google.Chrome DisablePrintPreview -bool true
