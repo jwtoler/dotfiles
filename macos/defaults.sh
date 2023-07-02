@@ -15,6 +15,8 @@ sudo -v
 # Keep-alive: update existing `sudo` time stamp until `.macos` has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
+
+
 ###############################################################################
 # General UI/UX                                                               #
 ###############################################################################
@@ -24,12 +26,6 @@ sudo scutil --set ComputerName $COMPUTERNAME
 sudo scutil --set HostName $HOSTNAME
 sudo scutil --set LocalHostName $LOCALHOSTNAME
 sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string $LOCALHOSTNAME
-
-# Disable the sound effects on boot
-sudo nvram SystemAudioVolume=" "
-
-# Set sidebar icon size to medium
-defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 2
 
 # Expand save panel by default
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
