@@ -15,6 +15,8 @@ xcode-select --install
 ###############################################################################
 if ! xcode-select --print-path &> /dev/null; then
 
+  echo "Install XCode Command Line Tools..."
+
   # Install the XCode Command Line Tools
   xcode-select --install &> /dev/null
 
@@ -23,15 +25,14 @@ if ! xcode-select --print-path &> /dev/null; then
     sleep 5
   done
 
-  echo "Install XCode Command Line Tools"
-
   # Point the `xcode-select` developer directory to
   # the appropriate directory from within `Xcode.app`
   echo "Make "xcode-select" developer directory point to Xcode"
   sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer
 
-  # Prompt user to agree to the terms of the Xcode license
-  echo "Agree with the XCode Command Line Tools licence"
-  sudo xcodebuild -license accept
+  # Accept the Xcode/iOS license agreement
+  if ! $(sudo xcodebuild -license status); then
+    sudo xcodebuild -license accept
+  fi
 
 fi
