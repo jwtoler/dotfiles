@@ -1,5 +1,5 @@
 tap 'homebrew/bundle'
-tap 'homebrew/core'
+#tap 'homebrew/core'
 tap 'jesseduffield/lazygit'
 tap 'nicoverbruggen/homebrew-cask'
 
