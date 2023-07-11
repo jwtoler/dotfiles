@@ -1,3 +1,5 @@
+#! /bin/sh
+
 if test ! "$(uname)" = "Darwin"
   then
   exit 0
@@ -8,7 +10,6 @@ fi
 ###############################################################################
 echo "› sudo softwareupdate -aiR"
 sudo softwareupdate -aiR
-xcode-select --install
 
 ###############################################################################
 # XCode Command Line Tools                                                    #
@@ -30,9 +31,9 @@ if ! xcode-select --print-path &> /dev/null; then
   echo "Make "xcode-select" developer directory point to Xcode"
   sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer
 
-  # Accept the Xcode/iOS license agreement
-  if ! $(sudo xcodebuild -license status); then
-    sudo xcodebuild -license accept
-  fi
+fi
 
+# Accept the Xcode/iOS license agreement
+if ! $(sudo xcodebuild -license status); then
+  sudo xcodebuild -license accept
 fi

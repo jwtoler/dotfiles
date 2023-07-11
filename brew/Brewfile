@@ -49,6 +49,7 @@ brew "speedtest_cli"
 
 # Development
 brew 'composer'
+brew 'docker-compose'
 brew 'fnm'
 brew 'mysql'
 brew 'node'

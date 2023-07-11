@@ -4,9 +4,9 @@ echo "Applying dock"
 
 dockutil --no-restart --remove all
 dockutil --no-restart --add "/Applications/Finder.app"
-dockutil --no-restart --add "/System/Applications/System Preferences.app"
-#dockutil --no-restart --add "/Applications/Google Chrome.app"
-#dockutil --no-restart --add "/System/Applications/Calendar.app"
+k
+dockutil --no-restart --add "/Applications/Messages.app"
+dockutil --no-restart --add "/Applications/Sequel Ace.app"
 
 killall Dock
 

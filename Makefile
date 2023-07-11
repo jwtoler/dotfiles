@@ -8,12 +8,14 @@ BIN 			:= $(HOMEBREW_PREFIX)/bin
 OHMYZSH         := $(HOME)/.oh-my-zsh
 ZSH_CUSTOM		:= $(OHMYZSH)/custom
 
+export ACCEPT_EULA=Y
+
 
 all: $(OS)
 
-macos: sudo core-macos brew packages vscode-ext python iterm link
+macos: sudo core-macos brew brew-packages vscode-ext python iterm link
 	@$(DOTFILES_DIR)/macos/dock.sh
-	@$(DOTFILES_DIR)/macos/defaults.sh
+	@$(DOTFILES_DIR)/macos/set-prefs.sh
 
 linux: core-linux link
 
@@ -25,6 +27,14 @@ else
 	@printf "Homebrew already installed; skipping installation\\n"
 endif
 
+brew-packages: brew
+	$(BIN)/brew bundle --file=$(DOTFILES_DIR)/brew/Brewfile || true
+	$(BIN)/brew bundle --file=$(DOTFILES_DIR)/brew/Caskfile || true
+	mkdir -p $(HOME)/.docker/cli-plugins
+	ln -sfn /opt/homebrew/opt/docker-compose/bin/docker-compose $(HOME)/.docker/cli-plugins/docker-compose
+	curl -L "https://packagecontrol.io/Package%20Control.sublime-package" \
+		-o /Users/justin/Library/Application\ Support/Sublime\ Text/Installed\ Packages/Package\ Control.sublime-package
+
 core-macos: | $(OHMYZSH)
 	@$(DOTFILES_DIR)/dockutil/install.sh
 	@$(DOTFILES_DIR)/macos/install.sh
@@ -35,9 +45,6 @@ core-linux:
 	apt-get upgrade -y
 	apt-get dist-upgrade -f
 	is-executable stow || apt-get -y install stow
-
-composer-packages:
-	$(BIN)/composer global require laravel/installer laravel/valet 
 
 iterm:
 	curl -L https://iterm2.com/shell_integration/zsh -o ~/.iterm2_shell_integration.zsh
@@ -59,12 +66,6 @@ unlink:
 		mv -v $(HOME)/$$FILE.bak $(HOME)/$${FILE%%.bak}; fi; done
 	for FILE in $$(\ls -A git); do if [ -f $(HOME)/$$FILE.bak ]; then \
 		mv -v $(HOME)/$$FILE.bak $(HOME)/$${FILE%%.bak}; fi; done
-
-packages: brew
-	$(BIN)/brew bundle --file=$(DOTFILES_DIR)/brew/Brewfile || true
-	$(BIN)/brew bundle --file=$(DOTFILES_DIR)/brew/Caskfile || true
-	curl -L "https://packagecontrol.io/Package%20Control.sublime-package" \
-		-o /Users/justin/Library/Application\ Support/Sublime\ Text/Installed\ Packages/Package\ Control.sublime-package
 
 python: brew
 	is-executable pyenv || brew install pyenv
