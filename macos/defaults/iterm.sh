@@ -4,6 +4,9 @@
 # iTerm 2                            								          #
 ###############################################################################
 
+# Install Shell Integration
+curl -L https://iterm2.com/shell_integration/zsh -o ~/.iterm2_shell_integration.zsh
+
 # Don’t display the annoying prompt when quitting iTerm
 defaults write com.googlecode.iterm2 PromptOnQuit -bool false
 

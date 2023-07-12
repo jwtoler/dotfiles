@@ -13,7 +13,7 @@ transfer() {
 }
 
 # whois a domain or a URL
-function whois() {
+whois() {
   local domain=$(echo "$1" | awk -F/ '{print $3}') # get domain from URL
   if [ -z $domain ] ; then
     domain=$1

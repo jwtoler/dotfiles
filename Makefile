@@ -8,12 +8,13 @@ BIN 			:= $(HOMEBREW_PREFIX)/bin
 OHMYZSH         := $(HOME)/.oh-my-zsh
 ZSH_CUSTOM		:= $(OHMYZSH)/custom
 
+export XDG_CONFIG_HOME = $(HOME)/.config
 export ACCEPT_EULA=Y
 
 
 all: $(OS)
 
-macos: sudo core-macos brew brew-packages vscode-ext python iterm link
+macos: sudo core-macos brew packages vscode-ext python link
 	@$(DOTFILES_DIR)/macos/dock.sh
 	@$(DOTFILES_DIR)/macos/set-prefs.sh
 
@@ -27,46 +28,47 @@ else
 	@printf "Homebrew already installed; skipping installation\\n"
 endif
 
-brew-packages: brew
-	$(BIN)/brew bundle --file=$(DOTFILES_DIR)/brew/Brewfile || true
-	$(BIN)/brew bundle --file=$(DOTFILES_DIR)/brew/Caskfile || true
-	mkdir -p $(HOME)/.docker/cli-plugins
-	ln -sfn /opt/homebrew/opt/docker-compose/bin/docker-compose $(HOME)/.docker/cli-plugins/docker-compose
-	curl -L "https://packagecontrol.io/Package%20Control.sublime-package" \
-		-o /Users/justin/Library/Application\ Support/Sublime\ Text/Installed\ Packages/Package\ Control.sublime-package
-
 core-macos: | $(OHMYZSH)
 	@$(DOTFILES_DIR)/dockutil/install.sh
 	@$(DOTFILES_DIR)/macos/install.sh
-	is-executable stow || brew install stow
 
 core-linux:
 	apt-get update
 	apt-get upgrade -y
 	apt-get dist-upgrade -f
+
+stow-macos: brew
+	is-executable stow || brew install stow
+
+stow-linux: core-linux
 	is-executable stow || apt-get -y install stow
 
-iterm:
-	curl -L https://iterm2.com/shell_integration/zsh -o ~/.iterm2_shell_integration.zsh
-
-link: 
+link: stow-$(OS)
 	for FILE in $$(\ls -A runcom); do if [ -f $(HOME)/$$FILE -a ! -h $(HOME)/$$FILE ]; then \
-		mv -v $(HOME)/$$FILE{,.bak}; fi; done
-	for FILE in $$(\ls -A git); do if [ -f $(HOME)/$$FILE -a ! -h $(HOME)/$$FILE ]; then \
 		mv -v $(HOME)/$$FILE{,.bak}; fi; done
 	$(BIN)/stow -t $(HOME) runcom
 	$(BIN)/stow -t $(HOME) git
 	$(BIN)/stow -t $(HOME) mackup
+	$(BIN)/stow -t $(HOME)/.config topgrade
 
-unlink: 
+unlink: stow-$(OS)
 	$(BIN)/stow --delete -t $(HOME) runcom
 	$(BIN)/stow --delete -t $(HOME) git
 	$(BIN)/stow --delete -t $(HOME) mackup
+	$(BIN)/stow --delete -t $(HOME)/.config topgrade
 	for FILE in $$(\ls -A runcom); do if [ -f $(HOME)/$$FILE.bak ]; then \
 		mv -v $(HOME)/$$FILE.bak $(HOME)/$${FILE%%.bak}; fi; done
-	for FILE in $$(\ls -A git); do if [ -f $(HOME)/$$FILE.bak ]; then \
-		mv -v $(HOME)/$$FILE.bak $(HOME)/$${FILE%%.bak}; fi; done
 
+packages: brew
+	$(BIN)/brew bundle --file=$(DOTFILES_DIR)/brew/Brewfile || true
+	$(BIN)/brew bundle --file=$(DOTFILES_DIR)/brew/Caskfile || true
+	mkdir -p $(HOME)/.docker/cli-plugins
+	ln -sfn /opt/homebrew/opt/docker-compose/bin/docker-compose $(HOME)/.docker/cli-plugins/docker-compose
+	curl -L "https://packagecontrol.io/Package%20Control.sublime-package" \
+		-o $(HOME)/Library/Application\ Support/Sublime\ Text/Installed\ Packages/Package\ Control.sublime-package
+
+pecl: 
+	pecl install redis apcu
 python: brew
 	is-executable pyenv || brew install pyenv
 	@$(DOTFILES_DIR)/python/install.sh
@@ -83,13 +85,13 @@ endif
 $(OHMYZSH):
 	@printf "Installing Oh My Zsh..."
 	sh -c "$$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-	@printf "Clonning alias-tips..."
+	@printf "Installing alias-tips..."
 	git clone https://github.com/djui/alias-tips.git $(ZSH_CUSTOM)/plugins/alias-tips
-	@printf "Clonning zsh-autosuggestions..."
+	@printf "Installing zsh-autosuggestions..."
 	git clone https://github.com/zsh-users/zsh-autosuggestions $(ZSH_CUSTOM)/plugins/zsh-autosuggestions
-	@printf "Clonning zsh-syntax-highlighting..."
+	@printf "Installing zsh-syntax-highlighting..."
 	git clone https://github.com/zsh-users/zsh-syntax-highlighting $(ZSH_CUSTOM)/plugins/zsh-syntax-highlighting
-	@printf "Clonning powerlevel10k..."
+	@printf "Installing powerlevel10k..."
 	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $(ZSH_CUSTOM)/themes/powerlevel10k
 
 
@@ -106,4 +108,4 @@ help:
 	\\n\
 	"
 
-.PHONY: brew macos linux core-macos core-linux link unlink
+.PHONY: brew macos linux core-macos core-linux packages python vscode-ext link unlink sudo

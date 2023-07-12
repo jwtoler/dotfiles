@@ -23,7 +23,7 @@ read -r -p "Overwrite /etc/hosts with the ad-blocking hosts file from someonewho
 if [[ $response =~ (yes|y|Y) ]]; then
   sudo cp /etc/hosts /etc/hosts.backup
   sudo curl -L "https://someonewhocares.org/hosts/zero/hosts" -o /etc/hosts 
-  echp "Your /etc/hosts file has been updated. Last version is saved in /etc/hosts.backup"
+  echo "Your /etc/hosts file has been updated. Last version is saved in /etc/hosts.backup"
 else
   echo "Skipped...";
 fi

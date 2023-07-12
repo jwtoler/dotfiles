@@ -54,6 +54,7 @@ runAsUser "${dockutil}" --remove all --no-restart ${plist}
 # Full path to Applications to add to the Dock
 apps=(
 	"/System/Applications/Messages.app"
+	"/Applications/Slack.app"
 	"/Applications/Safari.app"
 	"/Applications/Google Chrome.app"
 	"/Applications/iTerm.app"

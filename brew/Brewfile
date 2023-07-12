@@ -4,59 +4,68 @@ tap 'jesseduffield/lazygit'
 tap 'nicoverbruggen/homebrew-cask'
 
 
-# Binaries
-brew 'ant'
-brew 'bash' 							# Latest Bash version
+# Core
 brew 'bats-core'
 brew 'coreutils' 						# Those that come with macOS are outdated
-brew 'curl'
+brew 'mackup'							# Keep your Mac's application settings in sync
+brew 'mas' 								# Mac App Store command-line interface
+brew 'nano'	
+brew 'stow'								# Organize software neatly under a single directory tree
+brew 'topgrade'							# Upgrade everything and everywhere
+brew 'neovim'							# Ambitious Vim-fork focused on extensibility and agility
+
+
+# Binaries
+brew 'ant'								# Java build tool
+brew 'bash' 							# Latest Bash version
 brew 'duti'
 brew 'exa'  							# Modern replacement for 'ls'
-brew 'fd'								# Simple, fast and user-friendly alternative to find
 brew 'gh'
 brew 'git'								# Distributed revision control system
 brew 'git-extras'
 brew 'git-delta'						# Syntax-highlighting pager for git and diff output
 brew 'gnupg'
-brew 'grep'
 brew 'krb5'
 brew 'libpq'
-brew 'mackup'
-brew 'mas' 								# Mac App Store command-line interface
 brew 'openssl'
+brew 'pcre2'
 brew 'pkg-config' 						# https://github.com/driesvints/dotfiles/issues/20
-brew 'pyenv'  							# Python version management
-brew 'ssh-copy-id'
-brew 'stow'
 brew 'svn'								# Needed to install fonts
 brew 'tart'                             # macOS and Linux VMs on Apple Silicon to use in CI and other automations
 brew 'terminal-notifier' 				# Send macOS User Notifications from the command-line
-brew 'telnet'
-brew 'tree'								# List the contents of directories in an intuitive way
 brew 'tmux'								# Terminal multiplexer
-brew 'wget'								# Internet file retriever
 brew 'zsh'
 brew 'zsh-history-substring-search'
 brew 'zsh-syntax-highlighting'
 
 
-# Network tools
-brew "tor"
-brew "namebench"
-brew "nmap"
-brew "speedtest_cli"
+# FS/Network
+brew 'curl'								# Transfer data using various network protocols
+brew 'fd'								# Simple, fast and user-friendly alternative to find
+brew 'fzf'
+brew 'gnu-sed'
+brew 'grep'
+brew 'nmap'
+brew 'telnet'
+brew 'tor'
+brew 'tree'								# List the contents of directories in an intuitive way
+brew 'speedtest_cli'
+brew 'ssh-copy-id'
+brew 'wget'								# Internet file retriever
 
 
-# Development
+# Development Tools
 brew 'composer'
 brew 'docker-compose'
-brew 'fnm'
+brew 'fnm'								# Node version management
 brew 'mysql'
 brew 'node'
 brew 'php'
 brew 'php@8.2'
 brew 'phpunit'
+brew 'pyenv'  							# Python version management
 brew 'redis'
+brew 'rust'
 brew 'yarn'
 
 
@@ -70,9 +79,9 @@ brew 'youtube-dl'
 
 # Mac App Store
 mas 'Amphetamine',  id: 937984704
-mas "Keynote",      id: 409183694
-mas "Numbers",      id: 409203825
-mas "Pages",        id: 409201541
+mas 'Keynote',      id: 409183694
+mas 'Numbers',      id: 409203825
+mas 'Pages',        id: 409201541
 mas 'Spark', 		id: 1176895641
 mas 'Speedtest', 	id: 1153157709
-mas "Xcode",        id: 497799835
+mas 'Xcode',        id: 497799835

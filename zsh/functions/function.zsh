@@ -1,5 +1,5 @@
 # Load .env file into shell session for environment variables
-function envup() {
+envup() {
   if [ -f .env ]; then
     export $(sed '/^ *#/ d' .env)
   else
@@ -13,7 +13,7 @@ prepend-path() {
   [ -d $1 ] && PATH="$1:$PATH"
 }
 
-function start-work() {
+start-work() {
     mutagen-compose -f $HOME/Projects/docker-base/docker-compose.yml up -d
     mutagen-compose -f $HOME/Projects/appdev-api/docker-compose.yml up -d
     phpstorm

@@ -1,10 +1,6 @@
 #!/usr/bin/env bash
 
-###############################################################################
-# Python
-###############################################################################
-
-# pyenv *should* be installed at this point
+# pyenv *should* be installed
 hash pyenv 2>/dev/null || echo "Please install pyenv before continuing"
 
 # Install latest (stable) Python

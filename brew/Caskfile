@@ -1,9 +1,9 @@
-#tap "homebrew/cask"
-tap "homebrew/cask-fonts"
-tap "homebrew/cask-versions"
+tap 'buo/cask-upgrade'
+tap 'homebrew/cask-fonts'
+tap 'homebrew/cask-versions'
 
 # Apps
-cask 'appcleaner'
+cask 'appcleaner', args: { force: true }
 cask 'authy'
 cask 'bartender'
 cask 'carbon-copy-cloner'
@@ -13,23 +13,22 @@ cask 'diffmerge'
 cask 'docker'
 cask 'dropbox'
 cask 'fantastical'
-cask 'firefox'
-cask 'font-hack'
+cask 'firefox', args: { force: true }
 cask 'gitup'
 cask 'gpg-suite'
 cask 'google-chrome'
+cask 'hammerspoon'
 cask 'handbrake'
 cask 'iterm2'
-cask 'jetbrains-toolbox'
+cask 'jetbrains-toolbox', args: { force: true }
 cask 'nextcloud'
 cask 'notion'
-cask 'pastebot'
 cask 'phpmon'
 cask 'postman'
 cask 'raycast'
-cask 'sequel-ace'
+cask 'sequel-ace', args: { force: true }
 cask 'shottr'
-cask 'slack'
+cask 'slack', args: { force: true }
 cask 'sublime-text'
 cask 'the-unarchiver'
 cask 'transmission'
@@ -45,7 +44,8 @@ cask 'quicklook-json'
 
 
 # Fonts
-cask 'font-hack-nerd-font'
+cask 'font-fira-code'
+cask 'font-hack'
 cask 'font-lato'
 cask 'font-open-sans'
 cask 'font-roboto'
