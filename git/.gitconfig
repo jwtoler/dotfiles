@@ -121,14 +121,14 @@
 [init]
 	defaultBranch = main
 
+[includeIf "gitdir:~/.dotfiles/"]
+	path = .git_user_personal
+[includeIf "gitdir:~/Projects/personal/"]
+	path = .git_user_personal
+[includeIf "gitdir:~/Projects/work/"]
+	path = .git_user_work
+
 
 [include]
-	path = ~/.gitconfig.user
-
-    # Load local configs.
-    # https://git-scm.com/docs/git-config#_includes
-    #
-    # [!] The following needs to remain at the end of this file in
-    #     order to allow any of the above configs to be overwritten
-    #     by the local ones
+    # Load local configs last to allow overrides.
     path = ~/.gitconfig.local

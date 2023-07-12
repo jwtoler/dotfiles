@@ -9,7 +9,7 @@ After backing up your old Mac you may now follow these install instructions to s
 1. [Generate a new SSH key & add to GitHub profile](https://docs.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) by running:
 
    ```zsh
-   curl https://raw.githubusercontent.com/jwtoler/dotfiles/HEAD/ssh.sh | sh -s "<your-email-address>"
+   curl https://raw.githubusercontent.com/jwtoler/dotfiles/HEAD/ssh.sh | sh
    ```
 
 2. Clone this repo to `~/.dotfiles` with:
