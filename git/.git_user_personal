@@ -1,10 +1,10 @@
 [user]
   name = Justin Toler
-  email = jwtoler@gmail.com
+  email = 17133784+jwtoler@users.noreply.github.co
   # Uncomment the options below to auto-sign your git commits / tags using GPG.
   # Learn more about how to set up a GPG key pair here:
   #   https://nickjanetakis.com/blog/creating-and-managing-a-gpg-key-pair
-  #signingkey = jwtoler@gmail.com
+  #signingkey = 17133784+jwtoler@users.noreply.github.co
 
 #[commit]
 #  gpgsign = true
