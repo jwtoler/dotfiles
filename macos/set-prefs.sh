@@ -15,7 +15,6 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 ###############################################################################
 find ./defaults -type f -name '*.sh' -exec {} \;
 
-
 ###############################################################################
 # Spyware/Ad Blocking -- /etc/hosts
 ###############################################################################
@@ -28,16 +27,19 @@ else
   echo "Skipped...";
 fi
 
-
 ###############################################################################
 # Mackup Restore
 ###############################################################################
 find "${HOME}/Library/Mobile Documents/com~apple~CloudDocs/Mackup/" -type f -name "*.icloud" -exec brctl download {} \;
 mackup restore
 
+###############################################################################
+# Enable TouchID on Terminal
+###############################################################################
+sudo sed -i '2s/^/auth sufficient pam_tid.so \n/' /etc/pam.d/sudo
 
 ###############################################################################
-# Do some clean up work.
+# Some clean up
 ###############################################################################
 for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" "cfprefsd" \
            "Dock" "Finder" "Mail" "Messages" "Safari" "SystemUIServer" \
@@ -49,7 +51,7 @@ done
 sleep 1
 
 # then...
-echo "Success! Defaults are set."
+echo "Defaults are set!"
 echo "Some changes will not take effect until you reboot your machine."
 
 # See if the user wants to reboot.

@@ -1,6 +1,6 @@
 tap 'homebrew/bundle'
-#tap 'homebrew/core'
 tap 'jesseduffield/lazygit'
+tap 'minacle/chntpw/chntpw'
 tap 'nicoverbruggen/homebrew-cask'
 
 
@@ -17,9 +17,13 @@ brew 'neovim'							# Ambitious Vim-fork focused on extensibility and agility
 
 # Binaries
 brew 'ant'								# Java build tool
+brew 'aria2'							# Download with resuming and segmented downloading
 brew 'bash' 							# Latest Bash version
+brew 'cabextract'
+brew 'cdrtools'
 brew 'duti'
 brew 'exa'  							# Modern replacement for 'ls'
+brew 'freetds'							# Natively talk to Microsoft SQL Server and Sybase databases
 brew 'gh'
 brew 'git'								# Distributed revision control system
 brew 'git-extras'
@@ -27,6 +31,7 @@ brew 'git-delta'						# Syntax-highlighting pager for git and diff output
 brew 'gnupg'
 brew 'krb5'
 brew 'libpq'
+brew 'minacle/chntpw/chntpw'
 brew 'openssl'
 brew 'pcre2'
 brew 'pkg-config' 						# https://github.com/driesvints/dotfiles/issues/20
@@ -34,8 +39,8 @@ brew 'svn'								# Needed to install fonts
 brew 'tart'                             # macOS and Linux VMs on Apple Silicon to use in CI and other automations
 brew 'terminal-notifier' 				# Send macOS User Notifications from the command-line
 brew 'tmux'								# Terminal multiplexer
+brew 'wimlib'
 brew 'zsh'
-brew 'zsh-history-substring-search'
 brew 'zsh-syntax-highlighting'
 
 
@@ -55,18 +60,22 @@ brew 'wget'								# Internet file retriever
 
 
 # Development Tools
+brew 'cloudflared'						# Cloudflare Tunnel client (formerly Argo Tunnel)
 brew 'composer'
-brew 'docker-compose'
+brew 'docker'
+brew 'flyctl'							# Tool for Fly.dev to help deploy applications
 brew 'fnm'								# Node version management
-brew 'mysql'
-brew 'node'
+brew 'mutagen-io/mutagen/mutagen'
+brew 'mutagen-io/mutagen/mutagen-compose'
+brew 'n'								# Node package version
 brew 'php'
 brew 'php@8.2'
 brew 'phpunit'
+brew 'podman-compose'					# Alternative to docker-compose using podman
 brew 'pyenv'  							# Python version management
 brew 'redis'
 brew 'rust'
-brew 'yarn'
+brew 'unixodbc'							# Predictable API with which to access Data Sources
 
 
 # Media
@@ -84,4 +93,5 @@ mas 'Numbers',      id: 409203825
 mas 'Pages',        id: 409201541
 mas 'Spark', 		id: 1176895641
 mas 'Speedtest', 	id: 1153157709
+mas 'Wireguard'		id: 1451685025
 mas 'Xcode',        id: 497799835

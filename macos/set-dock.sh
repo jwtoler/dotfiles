@@ -1,14 +1,8 @@
-#!/bin/bash
+#! /bin/sh
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
-#
 # DESCRIPTION:
-# Script to configure the dock using docktutil - https://github.com/kcrawford/dockutil/
-# 
-# MIN REQUIREMENTS:
-# 	dockutil v3.0.0
-# 	macOS 11.x 
-#
+# 	Script to configure the dock using dockutil - https://github.com/kcrawford/dockutil/
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin

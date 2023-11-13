@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#! /bin/zsh
 
 # pyenv *should* be installed
 hash pyenv 2>/dev/null || echo "Please install pyenv before continuing"

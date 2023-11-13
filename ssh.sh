@@ -13,20 +13,18 @@ if [[ ! -d "${HOME}/.ssh/" ]]; then
 fi
 
 # check if personal ssh key already exists
-if [[ -f "${HOME}/.ssh/id_ed25519_personal" ]]; then
+if [[ -f "${HOME}/.ssh/id_ed25519" ]]; then
   echo "Personal SSH Key already exists. Skipping SSH Key Generation."
-  exit 0
 else
   echo "Generating a new personal SSH key..."
 
   # generate ssh keys for personal projects 
-  ssh-keygen -q -t ed25519 -C "${PERSONAL_EMAIL}" -f "${HOME}"/.ssh/id_ed25519_personal -N ""
+  ssh-keygen -q -t ed25519 -C "${PERSONAL_EMAIL}" -f "${HOME}"/.ssh/id_ed25519 -N ""
 fi
 
 # check if work ssh key already exists
 if [[ -f "${HOME}/.ssh/id_ed25519_work" ]]; then
   echo "Work SSH Key already exists. Skipping SSH Key Generation."
-  exit 0
 else
   echo "Generating a new work SSH key..."
 
@@ -43,19 +41,18 @@ if [[ -f "${HOME}/.ssh/config" ]]; then
 fi
 
 touch ~/.ssh/config
-printf "Host github.com\n Hostname github.com\n User git\n AddKeysToAgent yes\n UseKeychain yes\n IdentityFile ~/.ssh/id_ed25519_personal\n\n" | tee -a ~/.ssh/config >/dev/null
-printf "Host github-work\n Hostname git.charlotte.edu\n User git\n AddKeysToAgent yes\n UseKeychain yes\n IdentityFile ~/.ssh/id_ed25519_work\n" | tee -a ~/.ssh/config >/dev/null
+printf "Host github.com\n Hostname github.com\n User git\n AddKeysToAgent yes\n UseKeychain yes\n IdentityFile ~/.ssh/id_ed25519\n\n" | tee -a ~/.ssh/config >/dev/null
+printf "Host git.charlotte.edu\n Hostname git.charlotte.edu\n User git\n AddKeysToAgent yes\n UseKeychain yes\n IdentityFile ~/.ssh/id_ed25519_work\n" | tee -a ~/.ssh/config >/dev/null
+printf "Host git.uncc.edu\n Hostname git.uncc.edu\n User git\n AddKeysToAgent yes\n UseKeychain yes\n IdentityFile ~/.ssh/id_ed25519_work\n" | tee -a ~/.ssh/config >/dev/null
 
 # add ssh key
-sudo ssh-add "${HOME}"/.ssh/id_ed25519_personal
+sudo ssh-add "${HOME}"/.ssh/id_ed25519
 sudo ssh-add "${HOME}"/.ssh/id_ed25519_work
 
 # print public key to add for PERSONAL
-echo "PERSONAL Key created... add key to remote PERSONAL ACCOUNT!"
 echo "Personal Public Key:"
-cat "${HOME}"/.ssh/id_ed25519_personal.pub
+cat "${HOME}"/.ssh/id_ed25519.pub
 
 # print public key to add for WORK
-echo "WORK Key created... add key to remote WORK ACCOUNT!"
 echo "Work Public Key:"
 cat "${HOME}"/.ssh/id_ed25519_work.pub

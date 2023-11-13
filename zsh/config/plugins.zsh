@@ -8,10 +8,11 @@ plugins=(
   alias-tips
   asdf
   colored-man-pages
-  docker-compose
   git
-  tmux
-  tmuxinator
+  sudo
+  #tmux
+  #tmuxinator
   zsh-autosuggestions
+  #zsh-history-substring-search
   zsh-syntax-highlighting
 )

@@ -34,13 +34,17 @@ alias -- -="cd -"                  # Go to previous dir with -
 alias cd.='cd $(readlink -f .)'    # Go to real dir (i.e. if current dir is linked)
 
 # Directories
-alias dotfiles="cd $DOTFILES"
+alias dots="cd $DOTFILES"
 alias library="cd $HOME/Library"
-alias projects="cd $HOME/Projects"
+alias pj="cd $HOME/Projects"
+alias pers="cd $HOME/Projects/personal"
+alias wk="cd $HOME/Projects/work"
 
-# PHP
+# Binaries/Shortcuts
 alias cfresh="rm -rf vendor/ composer.lock && composer i"
 alias composer="php -d memory_limit=-1 /opt/homebrew/bin/composer"
+alias pn="pnpm"
+alias py="python"
 
 # Show/hide hidden files in Finder
 alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
@@ -63,17 +67,12 @@ alias killmenubar="killall SystemUIServer NotificationCenter"
 alias killos="killfinder && killdock && killmenubar"
 
 # Network & DNS
+alias hosts="sudo $EDITOR /etc/hosts"
 alias flushdns='sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder; echo "✌️ DNS flushed"'
 alias ip="curl -s ipinfo.io | jq -r '.ip'"
 alias ipl="ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'"
 alias ip6="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
-
-# Miscellaneous
-alias hosts="sudo $EDITOR /etc/hosts"
-alias quit="exit"
-alias week="date +%V"
 alias speedtest="wget -O /dev/null http://speed.transip.nl/100mb.bin"
-alias grip="grip --browser --user=webpro --pass=$GITHUB_TOKEN"
 
 # Include custom aliases
 if [[ -f ~/.aliases.local ]]; then

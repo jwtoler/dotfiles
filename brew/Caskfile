@@ -7,14 +7,15 @@ cask 'appcleaner', args: { force: true }
 cask 'authy'
 cask 'bartender'
 cask 'carbon-copy-cloner'
+cask 'cleanshot'
 cask 'coteditor'
 cask 'devtoys'
 cask 'diffmerge'
+cask 'discord'
 cask 'docker'
 cask 'dropbox'
 cask 'fantastical'
 cask 'firefox', args: { force: true }
-cask 'gitup'
 cask 'gpg-suite'
 cask 'google-chrome'
 cask 'hammerspoon'
@@ -24,18 +25,24 @@ cask 'jetbrains-toolbox', args: { force: true }
 cask 'nextcloud'
 cask 'notion'
 cask 'phpmon'
+cask 'podman-desktop'
 cask 'postman'
 cask 'raycast'
 cask 'sequel-ace', args: { force: true }
-cask 'shottr'
 cask 'slack', args: { force: true }
 cask 'sublime-text'
 cask 'the-unarchiver'
+cask 'tower'
 cask 'transmission'
 cask 'transmit'
 cask 'visual-studio-code'
 cask 'vlc'
 cask 'zoom'
+
+
+# Tools
+cask 'temurin' 						# Java SE build based upon OpenJDK		
+cask 'android-commandlinetools'		# Command-line tools for building and debugging Android apps
 
 
 # Quicklook
@@ -44,10 +51,10 @@ cask 'quicklook-json'
 
 
 # Fonts
-cask 'font-fira-code'
-cask 'font-hack'
-cask 'font-lato'
-cask 'font-open-sans'
+cask 'font-fira-code-nerd-font'
+cask 'font-hack-nerd-font'
+cask 'font-inconsolata-nerd-font'
+cask 'font-meslo-lg-nerd-font'
 cask 'font-roboto'
 cask 'font-source-code-pro-for-powerline'
 cask 'font-source-code-pro'

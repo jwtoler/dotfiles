@@ -15,6 +15,9 @@
 	# Log
 	log = log --pretty=oneline -n 20 --graph --abbrev-commit
 
+	# Will update all repos in the parent directory it is run from
+	pullall = "find . -type d -depth 1 -exec git --git-dir={}/.git --work-tree=$PWD/{} pull origin master \\;"
+
 	# Interactive rebase with the given number of latest commits.
 	reb = "!r() { git rebase -i HEAD~$1; }; r"
 
@@ -35,7 +38,7 @@
 
 [core]
 	# Use custom `.gitignore`
-	excludesfile = ~/.gitignore_global
+	excludesfile = ~/.gitignore-global
 
 	# Make `git rebase` safer on macOS.
 	# More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
@@ -80,11 +83,6 @@
 	renames = copies
 
 
-[diff "bin"]
-	# Use `hexdump` to diff binary files.
-	textconv = hexdump -v -C
-
-
 [help]
 	# Automatically correct and execute mistyped commands.
 	autocorrect = 1
@@ -94,41 +92,21 @@
 	autoSetupRemote = true
 
 
-# URL shorthands
-[url "git@github.com:"]
-	insteadOf = "gh:"
-	pushInsteadOf = "github:"
-	pushInsteadOf = "git://github.com/"
-
-[url "git://github.com/"]
-	insteadOf = "github:"
-
-[url "git@gist.github.com:"]
-	insteadOf = "gst:"
-	pushInsteadOf = "gist:"
-	pushInsteadOf = "git://gist.github.com/"
-
-[url "git://gist.github.com/"]
-	insteadOf = "gist:"
-
-
-[user]
-    # Do not guess the user's identity.
-    # https://github.com/git/git/blob/90f7b16b3adc78d4bbabbd426fb69aa78c714f71/Documentation/config.txt#L2847-L2855
-    useConfigOnly = true
-
-
 [init]
 	defaultBranch = main
 
+
 [includeIf "gitdir:~/.dotfiles/"]
-	path = .git_user_personal
+	path = .gitconfig-personal
 [includeIf "gitdir:~/Projects/personal/"]
-	path = .git_user_personal
+	path = .gitconfig-personal
 [includeIf "gitdir:~/Projects/work/"]
-	path = .git_user_work
+	path = .gitconfig-work
 
 
-[include]
+#[include]
     # Load local configs last to allow overrides.
-    path = ~/.gitconfig.local
+    #path = ~/.gitconfig.local
+[pull]
+	ff = only
+	rebase = true

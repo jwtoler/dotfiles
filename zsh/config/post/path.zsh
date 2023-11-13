@@ -11,15 +11,17 @@ prepend-path "/bin"
 prepend-path "/usr/bin"
 prepend-path "/usr/local/bin"
 prepend-path "$HOMEBREW_PREFIX/bin"
+prepend-path "$HOMEBREW_PREFIX/sbin"
 prepend-path "$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin"
 prepend-path "$HOMEBREW_PREFIX/opt/gnu-sed/libexec/gnubin"
 prepend-path "$HOMEBREW_PREFIX/opt/grep/libexec/gnubin"
+prepend-path "$HOMEBREW_PREFIX/share/android-commandlinetools"
 prepend-path "$DOTFILES/bin"
 prepend-path "/sbin"
 prepend-path "/usr/sbin"
 prepend-path "$HOME/.local/share/fnm"
 
-$DOTFILES/bin/is-macos && prepend-path "~/Library/Application Support/JetBrains/Toolbox/scripts"
+$DOTFILES/bin/is-macos && prepend-path "~/Library/Application\ Support/JetBrains/Toolbox/scripts"
 
 # Remove duplicates (preserving prepended items)
 # Source: http://unix.stackexchange.com/a/40755
