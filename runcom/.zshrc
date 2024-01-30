@@ -44,6 +44,9 @@ _load_settings "$DOTFILES/zsh/config"
 # iTerm Integration
 source ~/.iterm2_shell_integration.zsh
 
+# Load nvm
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
+
 # Aliases
 [[ -f "$DOTFILES/zsh/.aliases" ]] && source "$DOTFILES/zsh/.aliases"
 
@@ -51,10 +54,4 @@ source ~/.iterm2_shell_integration.zsh
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
 # THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-#export SDKMAN_DIR="$HOME/.sdkman"
-#[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-
-export PATH=$PATH:/Users/justin/.nexustools
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/Users/justin/.rd/bin:$PATH"
-### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

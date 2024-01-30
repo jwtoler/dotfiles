@@ -34,9 +34,14 @@ find "${HOME}/Library/Mobile Documents/com~apple~CloudDocs/Mackup/" -type f -nam
 mackup restore
 
 ###############################################################################
+# Set timeout of sudo to 60 mins on Terminal
+###############################################################################
+/bin/echo 'Defaults timestamp_timeout=60' | /usr/bin/sudo EDITOR='tee -a' visudo
+
+###############################################################################
 # Enable TouchID on Terminal
 ###############################################################################
-sudo sed -i '2s/^/auth sufficient pam_tid.so \n/' /etc/pam.d/sudo
+/bin/zsh touchid_for_sudo.sh
 
 ###############################################################################
 # Some clean up

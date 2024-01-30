@@ -25,10 +25,10 @@
 	retag = "!r() { git tag -d $1 && git push origin :refs/tags/$1 && git tag $1; }; r"
 
 	# Update the content of the last commit by including all staged changes.
-    u = commit --amend --no-edit
+  u = commit --amend --no-edit
 
 	# Update the content of the last commit by including all local changes.
-    ua = !git add --all && git commit --amend --no-edit
+  ua = !git add --all && git commit --amend --no-edit
 
 
 [branch]
@@ -107,6 +107,7 @@
 #[include]
     # Load local configs last to allow overrides.
     #path = ~/.gitconfig.local
+
 [pull]
 	ff = only
 	rebase = true

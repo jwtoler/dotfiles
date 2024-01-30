@@ -2,11 +2,7 @@
 # Retrieve it from getconf, otherwise it's just current $PATH
 $DOTFILES/bin/is-executable getconf && PATH=$($(command -v getconf) PATH)
 
-export HOMEBREW_PREFIX=$($DOTFILES/bin/is-supported $DOTFILES/bin/is-arm64 /opt/homebrew /usr/local)
-export PYENV_ROOT=$($HOMEBREW_PREFIX/bin/pyenv root)
-
 # Prepend new items to path (if directory exists)
-prepend-path "$PYENV_ROOT/shims"
 prepend-path "/bin"
 prepend-path "/usr/bin"
 prepend-path "/usr/local/bin"
@@ -20,6 +16,8 @@ prepend-path "$DOTFILES/bin"
 prepend-path "/sbin"
 prepend-path "/usr/sbin"
 prepend-path "$HOME/.local/share/fnm"
+prepend-path "$HOME/.rd/bin"
+prepend-path "$PYENV_ROOT/shims"
 
 $DOTFILES/bin/is-macos && prepend-path "~/Library/Application\ Support/JetBrains/Toolbox/scripts"
 

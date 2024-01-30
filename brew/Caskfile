@@ -6,6 +6,7 @@ tap 'homebrew/cask-versions'
 cask 'appcleaner', args: { force: true }
 cask 'authy'
 cask 'bartender'
+cask 'cakebrew'
 cask 'carbon-copy-cloner'
 cask 'cleanshot'
 cask 'coteditor'
@@ -22,6 +23,7 @@ cask 'hammerspoon'
 cask 'handbrake'
 cask 'iterm2'
 cask 'jetbrains-toolbox', args: { force: true }
+cask 'linearmouse'                                  # pointer acceleration and speed more accurately
 cask 'nextcloud'
 cask 'notion'
 cask 'phpmon'
@@ -41,8 +43,8 @@ cask 'zoom'
 
 
 # Tools
-cask 'temurin' 						# Java SE build based upon OpenJDK		
-cask 'android-commandlinetools'		# Command-line tools for building and debugging Android apps
+cask 'android-commandlinetools'    # Command-line tools for building and debugging Android apps
+cask 'temurin' 						         # Java SE build based upon OpenJDK
 
 
 # Quicklook
@@ -51,7 +53,7 @@ cask 'quicklook-json'
 
 
 # Fonts
-cask 'font-fira-code-nerd-font'
+cask 'font-fira-code'
 cask 'font-hack-nerd-font'
 cask 'font-inconsolata-nerd-font'
 cask 'font-meslo-lg-nerd-font'

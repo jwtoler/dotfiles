@@ -37,7 +37,7 @@ alias cd.='cd $(readlink -f .)'    # Go to real dir (i.e. if current dir is link
 alias dots="cd $DOTFILES"
 alias library="cd $HOME/Library"
 alias pj="cd $HOME/Projects"
-alias pers="cd $HOME/Projects/personal"
+alias personal="cd $HOME/Projects/personal"
 alias wk="cd $HOME/Projects/work"
 
 # Binaries/Shortcuts
@@ -45,6 +45,7 @@ alias cfresh="rm -rf vendor/ composer.lock && composer i"
 alias composer="php -d memory_limit=-1 /opt/homebrew/bin/composer"
 alias pn="pnpm"
 alias py="python"
+alias y="yarn"
 
 # Show/hide hidden files in Finder
 alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
