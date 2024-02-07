@@ -1,6 +1,6 @@
 [user]
   name = Justin Toler
-  email = justin.toler@charlotte.edu
+  email = jtoler5@charlotte.edu
   signingkey = ~/.ssh/id_ed25519_work.pub
 
 #[commit]
