@@ -43,8 +43,8 @@ cask 'zoom'
 
 
 # Tools
-cask 'android-commandlinetools'    # Command-line tools for building and debugging Android apps
-cask 'temurin' 						         # Java SE build based upon OpenJDK
+cask 'android-commandlinetools'    					# Command-line tools for building and debugging Android apps
+cask 'temurin' 						        		# Java SE build based upon OpenJDK
 
 
 # Quicklook

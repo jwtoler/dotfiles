@@ -60,6 +60,7 @@ brew 'wget'								                  # Internet file retriever
 
 # Development Tools
 brew 'cloudflared'						              # Cloudflare Tunnel client (formerly Argo Tunnel)
+brew 'colima'											# Container runtimes on macOS (and Linux) with minimal setu
 brew 'composer'
 brew 'docker'
 brew 'fnm'								                  # Node version management
