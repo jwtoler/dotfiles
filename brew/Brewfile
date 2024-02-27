@@ -53,7 +53,7 @@ brew 'nmap'
 brew 'telnet'
 brew 'tor'
 brew 'tree'								                  # List the contents of directories in an intuitive way
-brew 'speedtest_cli'
+brew 'speedtest-cli'
 brew 'ssh-copy-id'
 brew 'wget'								                  # Internet file retriever
 
