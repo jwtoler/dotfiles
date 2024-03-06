@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/usr/bin/env bash
 
 # Close System Preferences panes to prevent them from overriding
 osascript -e 'tell application "System Preferences" to quit'
@@ -26,16 +26,7 @@ mackup restore
 ###############################################################################
 # Enable TouchID on Terminal
 ###############################################################################
-/bin/zsh touchid_for_sudo.sh
-
-###############################################################################
-# Some clean up
-###############################################################################
-for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" "cfprefsd" \
-           "Dock" "Finder" "Mail" "Messages" "Safari" "SystemUIServer" \
-           "Terminal" "Twitter" "iCal"; do
-           kill all "${app}" > /dev/null 2>&1
-done
+bash touchid_for_sudo.sh
 
 # Wait a bit before moving on...
 sleep 1

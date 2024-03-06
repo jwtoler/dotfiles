@@ -20,7 +20,7 @@ brew 'ant'								                  # Java build tool
 brew 'aria2'							                  # Download with resuming and segmented downloading
 brew 'cabextract'
 brew 'cdrtools'
-brew 'duti'
+brew 'duti'										        # Set default apps for file types
 brew 'exa'  							                  # Modern replacement for 'ls'
 brew 'freetds'							                # Natively talk to Microsoft SQL Server and Sybase databases
 brew 'gh'
@@ -59,9 +59,11 @@ brew 'wget'								                  # Internet file retriever
 
 
 # Development Tools
+brew 'cirruslabs/cli/tart'								# Toolset to build macOS and Linux (VMs) on Apple Silicon
 brew 'cloudflared'						              # Cloudflare Tunnel client (formerly Argo Tunnel)
 brew 'colima'											# Container runtimes on macOS (and Linux) with minimal setu
 brew 'composer'
+cask 'dbngin'                       					# Local MySQL database management
 brew 'docker'
 brew 'fnm'								                  # Node version management
 brew 'mutagen-io/mutagen/mutagen'
