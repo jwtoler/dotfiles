@@ -35,14 +35,6 @@ macos: sudo core-macos brew packages vscode-ext pecl nodejs python link
 
 linux: core-linux link
 
-brew:
-ifeq ($(shell which brew),)
-	@printf "Homebrew not detected; running install script\\n"
-	NONINTERACTIVE=1 /bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-else
-	@printf "Homebrew already installed; skipping installation\\n"
-endif
-
 core-macos: | $(OHMYZSH)
 	@$(DOTFILES_DIR)/dockutil/install.sh
 	@$(DOTFILES_DIR)/macos/install.sh
@@ -52,7 +44,7 @@ core-linux:
 	@apt-get upgrade -y
 	@apt-get dist-upgrade -f
 
-stow-macos: brew
+stow-macos:
 	@is-executable stow || brew install stow
 
 stow-linux: core-linux
@@ -74,9 +66,7 @@ unlink: stow-$(OS)
 	@for FILE in $$(\ls -A runcom); do if [ -f $(HOME)/$$FILE.bak ]; then \
 		mv -v $(HOME)/$$FILE.bak $(HOME)/$${FILE%%.bak}; fi; done
 
-packages: brew
-	@$(BIN)/brew bundle --file=$(DOTFILES_DIR)/brew/Brewfile || true
-	@$(BIN)/brew bundle --file=$(DOTFILES_DIR)/brew/Caskfile || true
+packages:
 	@mkdir -p $(HOME)/.docker/cli-plugins
 	@ln -sfn /opt/homebrew/opt/docker-compose/bin/docker-compose $(HOME)/.docker/cli-plugins/docker-compose
 	@curl -L "https://packagecontrol.io/Package%20Control.sublime-package" \
@@ -99,7 +89,7 @@ pecl:
 		fi; \
 	done 
 
-python: brew
+python:
 	@is-executable pyenv || brew install pyenv
 	@$(DOTFILES_DIR)/python/install.sh
 

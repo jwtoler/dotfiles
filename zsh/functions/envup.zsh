@@ -7,8 +7,3 @@ envup() {
     return 1
   fi
 }
-
-# Add to path
-prepend-path() {
-  [ -d $1 ] && PATH="$1:$PATH"
-}

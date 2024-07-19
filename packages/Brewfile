@@ -1,5 +1,7 @@
+tap 'FelixKratz/formulae'
 tap 'homebrew/bundle'
 tap 'jesseduffield/lazygit'
+tap 'koekeishiya/formulae'
 tap 'minacle/chntpw/chntpw'
 tap 'nicoverbruggen/homebrew-cask'
 tap 'iina/homebrew-mpv-iina'
@@ -10,10 +12,11 @@ brew 'coreutils' 						                # Those that come with macOS are outdated
 brew 'mackup'							                  # Keep your Mac's application settings in sync
 brew 'mas' 								                  # Mac App Store command-line interface
 brew 'nano'	
+brew 'sketchybar'
 brew 'stow'								                  # Organize software neatly under a single directory tree
 brew 'topgrade'							                # Upgrade everything and everywhere
 brew 'neovim'							                  # Ambitious Vim-fork focused on extensibility and agility
-
+brew 'felixkratz/formulae/fyabai'
 
 # Binaries
 brew 'ant'								                  # Java build tool
@@ -28,12 +31,14 @@ brew 'git'								                  # Revision control system
 brew 'git-extras'
 brew 'git-delta'						                # Syntax-highlighting pager for git and diff output
 brew 'gnupg'
+brew 'jq'
 brew 'krb5'
 brew 'libpq'
 brew 'minacle/chntpw/chntpw'
 brew 'openssl'
 brew 'pcre2'
 brew 'pkg-config' 						              # https://github.com/driesvints/dotfiles/issues/20
+brew 'skhd'
 brew 'svn'								                  # Needed to install fonts
 brew 'tart'                                 # macOS and Linux VMs on Apple Silicon to use in CI and other automations
 brew 'terminal-notifier' 				            # Send macOS User Notifications from the command-line
@@ -44,8 +49,8 @@ brew 'zsh-syntax-highlighting'
 
 
 # FS/Network
-brew 'curl'								                  # Transfer data using various network protocols
-brew 'fd'								                    # Simple, fast and user-friendly alternative to find
+brew 'curl'								                 # Transfer data using various network protocols
+brew 'fd'								                 # Simple, fast and user-friendly alternative to find
 brew 'fzf'
 brew 'gnu-sed'
 brew 'grep'
@@ -69,6 +74,7 @@ brew 'fnm'								                  # Node version management
 brew 'mutagen-io/mutagen/mutagen'
 brew 'mutagen-io/mutagen/mutagen-compose'
 brew 'n'								                    # Node package version
+brew 'oven-sh/bun/bun'									# All-in-one toolkit for JavaScript and TypeScript apps
 brew 'php@8.2'
 brew 'phpunit'
 brew 'podman-compose'					              # Alternative to docker-compose using podman
@@ -80,9 +86,11 @@ brew 'unixodbc'							                # Predictable API with which to access Dat
 
 
 # Media
-brew 'mpv-iina'
+brew 'background-music'
 brew 'ffmpeg'
 brew 'imagemagick'
+brew 'mpv-iina'
+brew 'nowplaying-cli'							# macOS utility for currently playing media & simulating media actions
 brew 'uni'
 brew 'webp'
 brew 'youtube-dl'
