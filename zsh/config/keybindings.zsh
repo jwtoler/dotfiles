@@ -5,6 +5,10 @@ stty -ixon
 bindkey -v
 bindkey "^F" vi-cmd-mode
 
+# history
+bindkey '^[[A' history-search-backward
+bindkey '^[[B' history-search-forward
+
 # handy keybindings
 bindkey "^A" beginning-of-line
 bindkey "^E" end-of-line

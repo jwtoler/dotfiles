@@ -29,6 +29,8 @@
 
 	# Update the content of the last commit by including all local changes.
   ua = !git add --all && git commit --amend --no-edit
+	cmp = "!f() { git add -A && git commit -m \"$@\" && git push; }; f"
+	ac = "!f() { git add -A && git commit -m \"$@\"; }; f"
 
 
 [branch]
@@ -96,6 +98,13 @@
 	defaultBranch = main
 
 
+[user]
+	name = jtoler5_clt
+	email = jtoler5@charlotte.edu
+    useConfigOnly = true
+	signingkey = key::ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPIgfxRs3XZuUwQvSxnyJc82jeF1vZdy/+nFb9UI0+XU jtoler5@charlotte.edu
+
+
 [includeIf "gitdir:~/.dotfiles/"]
 	path = .gitconfig-personal
 [includeIf "gitdir:~/Projects/personal/"]
@@ -111,3 +120,12 @@
 [pull]
 	ff = only
 	rebase = true
+[gpg]
+	format = ssh
+	program = /opt/homebrew/bin/gpg
+[commit]
+	gpgsign = false
+[tag]
+	forceSignAnnotated = false
+[gpg "ssh"]
+	allowedsignersfile = 

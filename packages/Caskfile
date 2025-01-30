@@ -5,6 +5,7 @@ tap 'homebrew/cask-versions'
 # Apps
 cask 'appcleaner', args: { force: true }
 cask 'authy'
+cask 'balenaetcher'									# Flash OS images to SD cards & USB drives
 cask 'bartender'
 cask 'cakebrew'
 cask 'carbon-copy-cloner'
@@ -23,13 +24,14 @@ cask 'hammerspoon'
 cask 'handbrake'
 cask 'iterm2'
 cask 'jetbrains-toolbox', args: { force: true }
-cask 'linearmouse'                                  # pointer acceleration and speed more accurately
+cask 'linearmouse'                                  # Pointer acceleration and speed more accurately
 cask 'nextcloud'
 cask 'notion'
 cask 'phpmon'
 cask 'podman-desktop'
 cask 'postman'
 cask 'raycast'
+cask 'rocket'									# Emoji picker makes typing emoji faster using Slack-style shortcuts
 cask 'sequel-ace', args: { force: true }
 cask 'slack', args: { force: true }
 cask 'sublime-text'
@@ -37,6 +39,7 @@ cask 'the-unarchiver'
 cask 'tower'
 cask 'transmission'
 cask 'transmit'
+cask 'wezterm'							# Terminal Emulator
 cask 'visual-studio-code'
 cask 'vlc'
 cask 'zoom'

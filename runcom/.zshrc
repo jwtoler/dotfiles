@@ -2,9 +2,6 @@
 # .zshrc - loaded on interactive shells, after .zprofile
 #
 
-# Location of this repository
-DOTFILES="$HOME/.dotfiles"
-
 # Load custom executable functions
 for function in $DOTFILES/zsh/functions/*; do
   source $function

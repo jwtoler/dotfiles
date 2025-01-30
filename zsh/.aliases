@@ -1,6 +1,5 @@
 # Aliases
 alias c="clear"
-alias ls="/opt/homebrew/opt/coreutils/libexec/gnubin/ls -AhlFo --color --group-directories-first"
 alias ln="ln -v"
 alias e="$EDITOR"
 alias gacp="$DOTFILES/gacp.sh"
@@ -15,28 +14,24 @@ alias aliases="alias | sed 's/=.*//'"
 alias functions="declare -f | grep '^[a-z].* ()' | sed 's/{$//'"
 alias paths='echo $PATH | tr -s ":" "\n"'
 
-# Directory listing/traversal
-LS_COLORS=$($DOTFILES/bin/is-supported "ls --color" --color -G)
-LS_TIMESTYLEISO=$($DOTFILES/bin/is-supported "ls --time-style=long-iso" --time-style=long-iso)
-LS_GROUPDIRSFIRST=$($DOTFILES/bin/is-supported "ls --group-directories-first" --group-directories-first)
+# Directory listing
+alias ld='eza -lD'                                                          # lists only directories (no files)
+alias lf='eza -lf --icons=always --color=always | grep -v /'                # lists only files (no directories)
+alias lh='eza -dl .* --group-directories-first --icons=always'              # lists only hidden files (no directories)
+alias ll='eza -al --group-directories-first --icons=always'                 # lists everything with directories first
+alias ls='eza -alf --color=always --sort=size --icons=always | grep -v /'   # lists only files sorted by size
+alias lt='eza -al --sort=modified --icons=always'                           # lists everything sorted by time updated
 
-alias l="ls -lahA $LS_COLORS $LS_TIMESTYLEISO $LS_GROUPDIRSFIRST"
-alias ll="ls -lA $LS_COLORS"
-alias lt="ls -lhAtr $LS_COLORS $LS_TIMESTYLEISO $LS_GROUPDIRSFIRST"
-alias ld="ls -ld $LS_COLORS */"
-alias lp="stat -c '%a %n' *"
-
-unset LS_COLORS LS_TIMESTYLEISO LS_GROUPDIRSFIRST
-
+# Directory traversal
+#alias cd="z"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias -- -="cd -"                  # Go to previous dir with -
-alias cd.='cd $(readlink -f .)'    # Go to real dir (i.e. if current dir is linked)
 
 # Directories
-alias dots="cd $DOTFILES"
+alias dotfiles="cd $DOTFILES"
 alias library="cd $HOME/Library"
 alias pj="cd $HOME/Projects"
 alias personal="cd $HOME/Projects/personal"

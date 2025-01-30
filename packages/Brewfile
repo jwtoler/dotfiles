@@ -15,8 +15,10 @@ brew 'nano'
 brew 'sketchybar'
 brew 'stow'								                  # Organize software neatly under a single directory tree
 brew 'topgrade'							                # Upgrade everything and everywhere
+brew 'MonitorControl'									# Controls your external display brightness and volume and shows native OSD
 brew 'neovim'							                  # Ambitious Vim-fork focused on extensibility and agility
 brew 'felixkratz/formulae/fyabai'
+
 
 # Binaries
 brew 'ant'								                  # Java build tool
@@ -24,7 +26,7 @@ brew 'aria2'							                  # Download with resuming and segmented down
 brew 'cabextract'
 brew 'cdrtools'
 brew 'duti'										        # Set default apps for file types
-brew 'exa'  							                  # Modern replacement for 'ls'
+brew 'eza'  							                  # Modern replacement for 'ls'
 brew 'freetds'							                # Natively talk to Microsoft SQL Server and Sybase databases
 brew 'gh'
 brew 'git'								                  # Revision control system
@@ -36,14 +38,17 @@ brew 'krb5'
 brew 'libpq'
 brew 'minacle/chntpw/chntpw'
 brew 'openssl'
+brew 'pam-reattach'
 brew 'pcre2'
 brew 'pkg-config' 						              # https://github.com/driesvints/dotfiles/issues/20
 brew 'skhd'
+brew 'starship'
 brew 'svn'								                  # Needed to install fonts
 brew 'tart'                                 # macOS and Linux VMs on Apple Silicon to use in CI and other automations
 brew 'terminal-notifier' 				            # Send macOS User Notifications from the command-line
 brew 'tmux'								                  # Terminal multiplexer
 brew 'wimlib'
+brew 'zoxide'												# Better cd command
 brew 'zsh'
 brew 'zsh-syntax-highlighting'
 
@@ -51,7 +56,7 @@ brew 'zsh-syntax-highlighting'
 # FS/Network
 brew 'curl'								                 # Transfer data using various network protocols
 brew 'fd'								                 # Simple, fast and user-friendly alternative to find
-brew 'fzf'
+brew 'fzf'												 # General-purpose command-line fuzzy finder
 brew 'gnu-sed'
 brew 'grep'
 brew 'nmap'
@@ -98,10 +103,14 @@ brew 'youtube-dl'
 
 # Mac App Store
 mas 'Amphetamine',  id: 937984704
+mas 'Hand-Mirror'	id: 1502839586
 mas 'Keynote',      id: 409183694
 mas 'Numbers',      id: 409203825
 mas 'Pages',        id: 409201541
-mas 'Spark', 		    id: 1176895641
-mas 'Speedtest', 	  id: 1153157709
-mas 'Wireguard',		  id: 1451685025
+mas 'Photomator',   id: 1444636541
+mas 'Spark', 	    id: 1176895641
+mas 'Speedtest', 	id: 1153157709
+mas 'Wireguard',    id: 1451685025
 mas 'Xcode',        id: 497799835
+
+https://apps.apple.com/us/app/photomator-photo-editor/id1444636541

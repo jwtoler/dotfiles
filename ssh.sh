@@ -1,4 +1,4 @@
-#!/bin/sh
+  #!/bin/sh
 
 PERSONAL_EMAIL=jwtoler@gmail.com
 WORK_EMAIL=jtoler5@charlotte.edu
@@ -34,9 +34,13 @@ if [[ -f "${HOME}/.ssh/config" ]]; then
 fi
 
 touch ~/.ssh/config
-printf "Host github.com\n Hostname github.com\n User git\n AddKeysToAgent yes\n UseKeychain yes\n IdentityFile ~/.ssh/id_ed25519\n\n" | tee -a ~/.ssh/config >/dev/null
-printf "Host git.charlotte.edu\n Hostname git.charlotte.edu\n User git\n AddKeysToAgent yes\n UseKeychain yes\n IdentityFile ~/.ssh/id_ed25519_work\n" | tee -a ~/.ssh/config >/dev/null
-printf "Host git.uncc.edu\n Hostname git.uncc.edu\n User git\n AddKeysToAgent yes\n UseKeychain yes\n IdentityFile ~/.ssh/id_ed25519_work\n" | tee -a ~/.ssh/config >/dev/null
+printf "Host work_gh \n
+        Hostname github.com \n
+        IdentityFile ~/.ssh/id_ed25519_work \n
+        IdentitiesOnly yes \n
+        AddKeysToAgent yes \n
+        UseKeychain yes \n
+        ForwardAgent yes \n\n" | tee -a ~/.ssh/config >/dev/null
 
 # Add ssh key
 sudo ssh-add "${HOME}"/.ssh/id_ed25519

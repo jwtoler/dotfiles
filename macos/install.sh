@@ -26,7 +26,7 @@ mackup restore
 ###############################################################################
 # Enable TouchID on Terminal
 ###############################################################################
-bash touchid_for_sudo.sh
+bash sudo-touchid.sh -e -s
 
 # Wait a bit before moving on...
 sleep 1
