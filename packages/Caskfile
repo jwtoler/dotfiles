@@ -1,6 +1,4 @@
 tap 'buo/cask-upgrade'
-tap 'homebrew/cask-fonts'
-tap 'homebrew/cask-versions'
 
 # Apps
 cask 'appcleaner', args: { force: true }
