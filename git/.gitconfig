@@ -1,131 +1,104 @@
 [alias]
-	# Amend the currently staged files to the latest commit.
-	amend = commit --amend --reuse-message=HEAD
-
-	# Commit all changes.
-	ca = !git add -A && git commit -av
-
-	# Show the diff between the latest commit and the current state.
-	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
-
-	# Remove branches that have already been merged with main.
-	# a.k.a. ‘delete merged’
-	delmergedc = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
-
-	# Log
-	log = log --pretty=oneline -n 20 --graph --abbrev-commit
-
-	# Will update all repos in the parent directory it is run from
-	pullall = "find . -type d -depth 1 -exec git --git-dir={}/.git --work-tree=$PWD/{} pull origin master \\;"
-
-	# Interactive rebase with the given number of latest commits.
-	reb = "!r() { git rebase -i HEAD~$1; }; r"
-
-	# Remove the old tag with this name and tag the latest commit with it.
-	retag = "!r() { git tag -d $1 && git push origin :refs/tags/$1 && git tag $1; }; r"
-
-	# Update the content of the last commit by including all staged changes.
-  u = commit --amend --no-edit
-
-	# Update the content of the last commit by including all local changes.
-  ua = !git add --all && git commit --amend --no-edit
+    ua = !git add --all && git commit --amend --no-edit
 	cmp = "!f() { git add -A && git commit -m \"$@\" && git push; }; f"
 	ac = "!f() { git add -A && git commit -m \"$@\"; }; f"
-
-
-[branch]
-	# Show most recently changed branches first.
-	sort = -committerdate
-
+    cfeat = "!f() { git add -A && git commit -m \"feat: $@\"; }; f"
+    cfix = "!f() { git add -A && git commit -m \"fix: $@\"; }; f"
+    cchore = "!f() { git add -A && git commit -m \"chore: $@\"; }; f"
+    cref = "!f() { git add -A && git commit -m \"refactor: $@\"; }; f"
 
 [core]
-	# Use custom `.gitignore`
-	excludesfile = ~/.gitignore-global
+	utocrlf = input  						          # Keep newlines as in input
+	compression = 9 						          # Trade cpu for network
+	trustctime = false 						          # Make `git rebase` safer on macOS
+	precomposeunicode = false				          # Prevent non-ASCII symbols as unversioned
+    preloadindex = true                               # Enable parallel index preload for operations
+	untrackedCache = true					          # Speed up commands involving untracked files
+	whitespace = error						          # Show incorrect whitespaces as errors
+	excludesfile = /Users/justin/.gitignore-global
 
-	# Make `git rebase` safer on macOS.
-	# More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
-	trustctime = false
-
-	# Prevent showing files whose names contain non-ASCII symbols as unversioned.
-	# http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
-	precomposeunicode = false
-
-	# Speed up commands involving untracked files such as `git status`.
-	# https://git-scm.com/docs/git-update-index#_untracked_cache
-	untrackedCache = true
-
-
-[color]
-	# Use colors in Git commands that are capable of colored output when
-	# outputting to the terminal. (This is the default setting in Git ≥ 1.8.4.)
-	ui = auto
-
-
-[color "branch"]
-	current = yellow reverse
-	local = yellow
-	remote = green
-
-
-[color "diff"]
-	meta = yellow bold
-	frag = magenta bold # line info
-	old = red # deletions
-	new = green # additions
-
-
-[color "status"]
-	added = yellow
-	changed = green
-	untracked = cyan
-
+[advice]
+    addEmptyPathspec = false
+    pushNonFastForward = false
+    statusHints = false
 
 [diff]
-	# Detect copies as well as renames.
-	renames = copies
+    context = 3  							           # Less context in diffs
+    renames = copies  						           # Detect copies as renames in diffs
+    interHunkContext = 10  					           # Merge near hunks in diffs
 
+[diff-so-fancy]
+    markEmptyLines = false
+
+[fetch]
+    prune = true
 
 [help]
-	# Automatically correct and execute mistyped commands.
-	autocorrect = 1
-
-
-[push]
-	autoSetupRemote = true
-
+    autocorrect = 1
 
 [init]
-	defaultBranch = main
+    defaultBranch = main
 
+[interactive]
+    diffFilter = diff-so-fancy --patch
+    singlekey = true
 
-[user]
-	name = jtoler5_clt
-	email = jtoler5@charlotte.edu
-    useConfigOnly = true
-	signingkey = key::ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPIgfxRs3XZuUwQvSxnyJc82jeF1vZdy/+nFb9UI0+XU jtoler5@charlotte.edu
+[log]
+    abbrevCommit = true
+    graphColors = blue,yellow,cyan,magenta,green,red
 
-
-[includeIf "gitdir:~/.dotfiles/"]
-	path = .gitconfig-personal
-[includeIf "gitdir:~/Projects/personal/"]
-	path = .gitconfig-personal
-[includeIf "gitdir:~/Projects/work/"]
-	path = .gitconfig-work
-
-
-#[include]
-    # Load local configs last to allow overrides.
-    #path = ~/.gitconfig.local
+[push]
+    autoSetupRemote = true  				            # Eliminates --set-upstream for new branches
+    default = current  						            # Push only current branch by default
+    followTags = true
 
 [pull]
-	ff = only
 	rebase = true
-[gpg]
-	format = ssh
-	program = /opt/homebrew/bin/gpg
-[commit]
-	gpgsign = false
-[tag]
-	forceSignAnnotated = false
-[gpg "ssh"]
-	allowedsignersfile = 
+
+[rebase]
+    autoStash = true
+    missingCommitsCheck = warn
+
+[status]
+    branch = true
+    showStash = true
+    showUntrackedFiles = all                            # Show individual untracked files
+
+[submodule]
+    fetchJobs = 16
+
+# Colors
+[color "blame"]
+    highlightRecent = black bold,1 year ago,white,1 month ago,default,7 days ago,blue
+
+[color "branch"]
+    current  = magenta
+    local    = default
+    remote   = yellow
+    upstream = green
+    plain    = blue
+
+[color "diff"]
+    meta       = black bold
+    frag       = magenta
+    context    = white
+    whitespace = yellow reverse
+
+# URL shortcuts
+[url "git@github.com:"]
+    insteadOf = "gh:"
+[url "git@github.com:jwtoler/"]
+    insteadOf = "jwtoler:"
+[url "git@github.com:clt-appdev/"]
+    insteadOf = "uncc:"
+
+# User configs
+[includeIf "gitdir:~/.dotfiles/"]
+    path = .gitconfig-personal
+[includeIf "gitdir:~/Projects/personal/"]
+    path = .gitconfig-personal
+[includeIf "gitdir:~/Projects/work/"]
+    path = .gitconfig-work
+
+[include]
+    path = ~/.gitconfig.local					             # Load local configs last to allow overrides

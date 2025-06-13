@@ -23,6 +23,8 @@ brew 'felixkratz/formulae/fyabai'
 # Binaries
 brew 'ant'								                  # Java build tool
 brew 'aria2'							                  # Download with resuming and segmented downloading
+brew 'borders'												# Add colored borders to user windows
+brew 'bruno'												# Fast and Git-Friendly Opensource API client
 brew 'cabextract'
 brew 'cdrtools'
 brew 'duti'										        # Set default apps for file types
@@ -32,6 +34,7 @@ brew 'gh'
 brew 'git'								                  # Revision control system
 brew 'git-extras'
 brew 'git-delta'						                # Syntax-highlighting pager for git and diff output
+brew 'gitleaks'											# Detects secrets like passwords, API keys, and tokens in git repos
 brew 'gnupg'
 brew 'jq'
 brew 'krb5'
@@ -112,5 +115,3 @@ mas 'Spark', 	    id: 1176895641
 mas 'Speedtest', 	id: 1153157709
 mas 'Wireguard',    id: 1451685025
 mas 'Xcode',        id: 497799835
-
-https://apps.apple.com/us/app/photomator-photo-editor/id1444636541

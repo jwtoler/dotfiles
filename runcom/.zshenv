@@ -48,13 +48,17 @@ export SDKMAN_DIR="$HOME/.sdkman"
 # Starship
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 
+# Plugin: zoxide
+# Custom options to pass to fzf during interactive selection
+export _ZO_FZF_OPTS="$FZF_DEFAULT_OPTS --select-1 --exit-0"
+
 # Set LDFLAGS environment variable for the linker to use the specified directories for library files.
 # This is useful when building software that depends on non-standard library locations, like zlib and bzip2 in this case.
-export LDFLAGS="-L/usr/local/opt/zlib/lib -L/usr/local/opt/bzip2/lib"
+export LDFLAGS="-L/usr/local/opt/zlib/lib -L/usr/local/opt/bzip2/lib -L/opt/homebrew/opt/php@8.2/lib"
 
 # Set CPPFLAGS environment variable for the C/C++ preprocessor to use the specified directories for header files.
 # This is useful when building software that depends on non-standard header locations, like zlib and bzip2 in this case.
-export CPPFLAGS="-I/usr/local/opt/zlib/include -I/usr/local/opt/bzip2/include"
+export CPPFLAGS="-I/usr/local/opt/zlib/include -I/usr/local/opt/bzip2/include -I/opt/homebrew/opt/php@8.2/include"
 
 # Local config
 [[ -f ~/.zshenv.local ]] && source ~/.zshenv.local

@@ -52,14 +52,17 @@ stow-linux: core-linux
 
 link: stow-$(OS)
 	@mkdir -p $(HOME)/.hammerspoon
-	@mkdir -p $(HOME)/.config/{starship,wezterm}
+	@mkdir -p $(HOME)/.config/{borders,sketchybar,starship,wezterm}
 	@for FILE in $$(\ls -A runcom); do if [ -f $(HOME)/$$FILE -a ! -h $(HOME)/$$FILE ]; then \
 		mv -v $(HOME)/$$FILE{,.bak}; fi; done
 	@$(BIN)/stow -t $(HOME) runcom
 	@$(BIN)/stow -t $(HOME) git
 	@$(BIN)/stow -t $(HOME) mackup
 	@$(BIN)/stow -t $(HOME)/.hammerspoon hammerspoon
+	@$(BIN)/stow -t $(HOME)/.config aerospace
 	@$(BIN)/stow -t $(HOME)/.config topgrade
+	@$(BIN)/stow -t $(HOME)/.config/borders borders
+	@$(BIN)/stow -t $(HOME)/.config/sketchybar sketchybar
 	@$(BIN)/stow -t $(HOME)/.config/starship starship
 	@$(BIN)/stow -t $(HOME)/.config/wezterm wezterm
 
@@ -68,7 +71,10 @@ unlink: stow-$(OS)
 	@$(BIN)/stow --delete -t $(HOME) git
 	@$(BIN)/stow --delete -t $(HOME) mackup
 	@$(BIN)/stow --delete -t $(HOME)/.hammerspoon hammerspoon
+	@$(BIN)/stow --delete -t $(HOME)/.config aerospace
 	@$(BIN)/stow --delete -t $(HOME)/.config topgrade
+	@$(BIN)/stow --delete -t $(HOME)/.config/borders borders
+	@$(BIN)/stow --delete -t $(HOME)/.config/sketchybar sketchybar
 	@$(BIN)/stow --delete -t $(HOME)/.config/starship starship
 	@$(BIN)/stow --delete -t $(HOME)/.config/wezterm wezterm
 	@for FILE in $$(\ls -A runcom); do if [ -f $(HOME)/$$FILE.bak ]; then \

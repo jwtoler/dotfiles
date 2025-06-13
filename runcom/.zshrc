@@ -48,7 +48,9 @@ source ~/.iterm2_shell_integration.zsh
 [[ -f "$DOTFILES/zsh/.aliases" ]] && source "$DOTFILES/zsh/.aliases"
 
 # Local config
-[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local2
 
 # THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+. "$HOME/.local/share/../bin/env"

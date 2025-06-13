@@ -1,27 +1,18 @@
-#!/usr/bin/env bash
-sudo -v
+#! /bin/bash
 
-DOTFILES_DIR=$(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
-echo $DOTFILES_DIR
+# Get the absolute path of the directory where the script is located
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-# Define variables for each package manager and include the corresponding package lists
-. ../scripts/functions.sh
-brew_packages="Brewfile"
-cask_packages="Caskfile"
-node_packages="node_packages.txt"
-python_packages="python_packages.txt"
+. $SCRIPT_DIR/utils.sh
+
+# Define variables for each package manager
+brew_packages="$SCRIPT_DIR/../packages/Brewfile"
+cask_packages="$SCRIPT_DIR/../packages/Caskfile"
+node_packages="$SCRIPT_DIR/../packages/node_packages.txt"
+python_packages="$SCRIPT_DIR/../packages/python_packages.txt"
 
 # Define a function for installing packages with Homebrew
 install_brew_packages() {
-  if ! command -v $(which brew) &>/dev/null; then
-    substep_info "Homebrew not found. Installing..."
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    if ! command -v $(which brew) &>/dev/null; then
-      error "Failed to install Homebrew. Exiting."
-      exit 1
-    fi
-    substep_success "Homebrew installed."
-  fi
   info "Installing Homebrew packages..."
   brew update
   brew upgrade
@@ -34,10 +25,10 @@ install_brew_packages() {
 install_node_packages() {
   # Install FNM
   if ! command -v fnm &>/dev/null; then
-    substep_info "Installing FNM..."
+    info "Installing FNM..."
     curl -fsSL https://fnm.vercel.app/install | bash
     eval "$(fnm env --use-on-cd)" # needed to install npm packages - already set for Fish
-    substep_success "FNM installed."
+    success "FNM installed."
   fi
 
   # Install latest LTS version of Node with FNM and set as default
@@ -46,7 +37,7 @@ install_node_packages() {
     fnm install --lts
     fnm alias lts-latest default
     fnm use default
-    substep_success "Node LTS installed and set as default for FNM."
+    success "Node LTS installed and set as default for FNM."
   fi
 
   # Install NPM packages
@@ -59,21 +50,21 @@ install_node_packages() {
 # Define a function for installing packages with Python
 install_python_packages() {
   if ! command -v $(which python) &>/dev/null; then
-    substep_info "Python not found. Installing..."
+    info "Python not found. Installing..."
     brew install python
     if ! command -v $(which python) &>/dev/null; then
       error "Failed to install Python. Exiting."
       exit 1
     fi
-    substep_success "Python installed."
+    success "Python installed."
   fi
   info "Installing Python packages..."
   pip install $(cat "$python_packages")
   success "Finished installing Python packages."
 }
 
-
-# Call each installation function
-install_brew_packages
-install_node_packages
-# install_python_packages
+install_custom_packages() {
+  # Install Posting - terminal app for developing and testing APIs
+  curl -LsSf https://astral.sh/uv/install.sh | sh
+  uv tool install --python 3.12 posting
+}

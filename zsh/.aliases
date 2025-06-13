@@ -1,20 +1,28 @@
-# Aliases
+# ------------------------------------------------------------------
+# Binaries
+# ------------------------------------------------------------------
 alias c="clear"
 alias ln="ln -v"
 alias e="$EDITOR"
-alias gacp="$DOTFILES/gacp.sh"
 alias v="$VISUAL"
 alias mkdir="mkdir -p"
-alias php8="php"
-alias reload="source ~/.zshrc" 
-alias zshedit="edit ~/.zshrc" 
+alias cfresh="rm -rf vendor/ composer.lock && composer i"
+alias composer="php -d memory_limit=-1 /opt/homebrew/bin/composer"
+alias py="python"
+alias y="yarn"
 
-# List declared aliases, functions, paths
-alias aliases="alias | sed 's/=.*//'"
-alias functions="declare -f | grep '^[a-z].* ()' | sed 's/{$//'"
-alias paths='echo $PATH | tr -s ":" "\n"'
+# ------------------------------------------------------------------
+# Directories
+# ------------------------------------------------------------------
+alias dotfiles="cd $DOTFILES"
+alias library="cd $HOME/Library"
+alias pj="cd $HOME/Projects"
+alias personal="cd $HOME/Projects/personal"
+alias wk="cd $HOME/Projects/work"
 
-# Directory listing
+# ------------------------------------------------------------------
+# Directory Listing
+# ------------------------------------------------------------------
 alias ld='eza -lD'                                                          # lists only directories (no files)
 alias lf='eza -lf --icons=always --color=always | grep -v /'                # lists only files (no directories)
 alias lh='eza -dl .* --group-directories-first --icons=always'              # lists only hidden files (no directories)
@@ -22,27 +30,66 @@ alias ll='eza -al --group-directories-first --icons=always'                 # li
 alias ls='eza -alf --color=always --sort=size --icons=always | grep -v /'   # lists only files sorted by size
 alias lt='eza -al --sort=modified --icons=always'                           # lists everything sorted by time updated
 
-# Directory traversal
-#alias cd="z"
+# ------------------------------------------------------------------
+# Navigation
+# ------------------------------------------------------------------
+alias z='__zoxide_zi'
+alias ~='cd ~'
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
-alias -- -="cd -"                  # Go to previous dir with -
+alias -- -="cd -" # Go to previous dir with -
 
-# Directories
-alias dotfiles="cd $DOTFILES"
-alias library="cd $HOME/Library"
-alias pj="cd $HOME/Projects"
-alias personal="cd $HOME/Projects/personal"
-alias wk="cd $HOME/Projects/work"
+# ------------------------------------------------------------------
+# Copy / Get / Remove
+# ------------------------------------------------------------------
+alias mkdir="mkdir -pv"
+alias cp="cp -iv"
+alias ln='ln -i'
+alias mv="mv -iv"
 
-# Binaries/Shortcuts
-alias cfresh="rm -rf vendor/ composer.lock && composer i"
-alias composer="php -d memory_limit=-1 /opt/homebrew/bin/composer"
-alias pn="pnpm"
-alias py="python"
-alias y="yarn"
+# ------------------------------------------------------------------
+# Docker
+# ------------------------------------------------------------------
+alias dps='docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"'
+alias dl='docker logs --tail=100'
+alias dc='docker compose'
+
+# ------------------------------------------------------------------
+# Mutagen Compose
+# ------------------------------------------------------------------
+alias mc='mutagen-compose'
+alias mcu='mutagen-compose up -d'
+
+# ------------------------------------------------------------------
+# Networking and IP addresses
+# ------------------------------------------------------------------
+alias hosts="sudo $EDITOR /etc/hosts"
+alias flushdns='sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder; echo "✌️ DNS flushed"'
+alias ip="curl -s ipinfo.io | jq -r '.ip'"
+alias ipl="ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'"
+alias ip6="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
+alias ports='sudo lsof -nP 2>/dev/null | grep LISTEN | sed -re "s/ +/ /g" | cut -d " " -f 1,3,9 | sort -u | column -t'
+alias speedtest="wget -O /dev/null http://speed.transip.nl/100mb.bin"
+
+# Enhanced WHOIS lookups
+alias whois="whois -h whois-servers.net"
+
+# View HTTP traffic
+alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
+alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+
+# ------------------------------------------------------------------
+# Misc
+# ------------------------------------------------------------------
+alias aliases="alias | sed 's/=.*//'"
+alias functions="declare -f | grep '^[a-z].* ()' | sed 's/{$//'"
+alias paths='echo $PATH | tr -s ":" "\n"'
+alias h="history"
+
+# Much nicer output for the apt-get command.
+alias apt-get="apt-get -q -o Dpkg::Progress=true -o Dpkg::Progress-Fancy=true -o APT::Get::AutomaticRemove=true"
 
 # Show/hide hidden files in Finder
 alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
@@ -58,19 +105,12 @@ alias zip="zip -x *.DS_Store -x *__MACOSX* -x *.AppleDouble*"
 # Empty trash on mounted volumes and main HDD, and clear system logs
 alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl"
 
-# Reload native apps
+# Reload
 alias killfinder="killall Finder"
 alias killdock="killall Dock"
 alias killmenubar="killall SystemUIServer NotificationCenter"
 alias killos="killfinder && killdock && killmenubar"
-
-# Network & DNS
-alias hosts="sudo $EDITOR /etc/hosts"
-alias flushdns='sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder; echo "✌️ DNS flushed"'
-alias ip="curl -s ipinfo.io | jq -r '.ip'"
-alias ipl="ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'"
-alias ip6="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
-alias speedtest="wget -O /dev/null http://speed.transip.nl/100mb.bin"
+alias reload="exec $SHELL -l" # invoke as a login shell
 
 # Include custom aliases
 if [[ -f ~/.aliases.local ]]; then

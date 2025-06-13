@@ -26,10 +26,12 @@ cask 'iterm2'
 cask 'jetbrains-toolbox', args: { force: true }
 cask 'linearmouse'                                  # Pointer acceleration and speed more accurately
 cask 'nextcloud'
+cask 'nikitabobko/tap/aerospace' 					# i3-like tiling window manager for macOS
 cask 'notion'
 cask 'phpmon'
 cask 'podman-desktop'
 cask 'postman'
+cask 'qbittorrent'								# Peer to peer Bitorrent client
 cask 'raycast'
 cask 'rocket'									# Emoji picker makes typing emoji faster using Slack-style shortcuts
 cask 'sequel-ace', args: { force: true }
