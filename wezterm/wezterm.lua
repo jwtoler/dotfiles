@@ -4,6 +4,7 @@ require("events")
 
 -- Apply color scheme based on the WEZTERM_THEME environment variable
 local themes = {
+	catppuccin = "Catppuccin Mocha",
 	nord = "Nord (Gogh)",
 	onedark = "One Dark (Gogh)",
 }

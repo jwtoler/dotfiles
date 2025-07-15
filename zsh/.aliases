@@ -1,19 +1,20 @@
 # ------------------------------------------------------------------
-# Binaries
+# System
 # ------------------------------------------------------------------
 alias c="clear"
+alias e="exit"
 alias ln="ln -v"
-alias e="$EDITOR"
-alias v="$VISUAL"
-alias mkdir="mkdir -p"
-alias cfresh="rm -rf vendor/ composer.lock && composer i"
-alias composer="php -d memory_limit=-1 /opt/homebrew/bin/composer"
 alias py="python"
 alias y="yarn"
+alias v="$VISUAL"
+alias cfresh="rm -rf vendor/ composer.lock && composer i"
+alias composer="php -d memory_limit=-1 /opt/homebrew/bin/composer"
 
 # ------------------------------------------------------------------
 # Directories
 # ------------------------------------------------------------------
+alias doc="$HOME/Documents"
+alias dow="$HOME/Downloads"
 alias dotfiles="cd $DOTFILES"
 alias library="cd $HOME/Library"
 alias pj="cd $HOME/Projects"
@@ -23,12 +24,12 @@ alias wk="cd $HOME/Projects/work"
 # ------------------------------------------------------------------
 # Directory Listing
 # ------------------------------------------------------------------
-alias ld='eza -lD'                                                          # lists only directories (no files)
-alias lf='eza -lf --icons=always --color=always | grep -v /'                # lists only files (no directories)
-alias lh='eza -dl .* --group-directories-first --icons=always'              # lists only hidden files (no directories)
-alias ll='eza -al --group-directories-first --icons=always'                 # lists everything with directories first
-alias ls='eza -alf --color=always --sort=size --icons=always | grep -v /'   # lists only files sorted by size
-alias lt='eza -al --sort=modified --icons=always'                           # lists everything sorted by time updated
+alias ld='eza -lD'
+alias lf='eza -lf --icons=always --color=always | grep -v /'
+alias lh='eza -dl .* --group-directories-first --icons=always'
+alias ll='eza -al --group-directories-first --icons=always'
+alias ls='eza -a --icons=always'
+alias lt='eza --tree --level=2  --icons --git'
 
 # ------------------------------------------------------------------
 # Navigation

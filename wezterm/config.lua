@@ -20,35 +20,17 @@ config = {
   tab_max_width = 100,
 
   -- Fonts
-  font_size = 12,
   font = wezterm.font("MesloLGS Nerd Font Mono"),
-
-   -- Colors
-  colors = {
-    foreground = "#F8F8F2",
-    background = "#282A36",
-    cursor_fg = "black",
-    cursor_bg = "white",
-    cursor_border = "white",
-    selection_fg = "white",
-    selection_bg = "#44475A",
-    scrollbar_thumb = scrollbar_color,
-    ansi = { "#21222C", "#FF5555", "#50FA7B", "#F1FA8C", "#BD93F9", "#FF79C6", "#8BE9FD", "#F8F8F2" },
-    brights = { "#6272A4", "#FF6E6E", "#69FF94", "#FFFFA5", "#D6ACFF", "#FF92DF", "#A4FFFF", "#FFFFFF" },
-    tab_bar = {
-      background = "#282A36",
-      active_tab = { bg_color = "#F8F8F2", fg_color = "#21222C", intensity = "Bold" },
-      inactive_tab = { bg_color = "#6272A4", fg_color = "#21222C", intensity = "Bold" },
-      inactive_tab_hover = { bg_color = "#B0B8D1", fg_color = "#21222C", intensity = "Bold" },
-    }
-  },
+  font_size = 12,
 
   -- Window
   window_close_confirmation = "NeverPrompt",
   adjust_window_size_when_changing_font_size = false,
   window_decorations = "RESIZE",
   window_padding = { left = 0, right = 0, top = 0, bottom = 0 },
+  macos_window_background_blur = 30,
 
+  -- Background
   background = {
     {
       source = {
@@ -59,9 +41,6 @@ config = {
         saturation = 1.02,
         brightness = 0.25,
       },
-      -- attachment = { Parallax = 0.3 },
-      -- width = "100%",
-      -- height = "100%",
     },
     {
       source = {
@@ -82,6 +61,15 @@ config = {
     },
   },
 
+  -- Mouse
+  mouse_bindings = {
+    -- Ctrl-click will open the link under the mouse cursor
+    {
+      event = { Up = { streak = 1, button = 'Left' } },
+      mods = 'CTRL',
+      action = wezterm.action.OpenLinkAtMouseCursor,
+    },
+  },
 
   --- URLs in Markdown files are not handled properly by default
   -- Source: https://github.com/wez/wezterm/issues/3803#issuecomment-1608954312
@@ -126,5 +114,6 @@ config = {
       format = "mailto:$0",
     },
   },
-}
+},
+
 return config

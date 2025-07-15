@@ -1,6 +1,6 @@
-#
+# ------------------------------------------------------------------
 # .zshenv - loaded each and every time
-#
+# ------------------------------------------------------------------
 
 # Dotfiles path
 export DOTFILES="$HOME/.dotfiles"
@@ -9,7 +9,7 @@ export DOTFILES="$HOME/.dotfiles"
 export TMUX_THEME="nord"
 export NVIM_THEME="nord"
 export STARSHIP_THEME="nord"
-export WEZTERM_THEME="nord"
+export WEZTERM_THEME="catppuccin"
 
 # Locale settings
 export LANG="en_US.UTF-8" # Sets default locale for all categories
@@ -17,9 +17,10 @@ export LC_ALL="en_US.UTF-8" # Overrides all other locale settings
 export LC_CTYPE="en_US.UTF-8" # Controls character classification and case conversion
 
 # XDG Base Directory Specification
-export XDG_CACHE_HOME="$HOME/.cache"
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CONFIG_HOME="$HOME/.config"         # Config files
+export XDG_CACHE_HOME="$HOME/.cache"           # Cache files
+export XDG_DATA_HOME="$HOME/.local/share"      # Application data
+export XDG_STATE_HOME="$HOME/.local/state"     # Logs and state files
 
 # Editor
 export EDITOR="nvim"
@@ -54,11 +55,11 @@ export _ZO_FZF_OPTS="$FZF_DEFAULT_OPTS --select-1 --exit-0"
 
 # Set LDFLAGS environment variable for the linker to use the specified directories for library files.
 # This is useful when building software that depends on non-standard library locations, like zlib and bzip2 in this case.
-export LDFLAGS="-L/usr/local/opt/zlib/lib -L/usr/local/opt/bzip2/lib -L/opt/homebrew/opt/php@8.2/lib"
+export LDFLAGS="-L/usr/local/opt/zlib/lib -L/usr/local/opt/bzip2/lib"
 
 # Set CPPFLAGS environment variable for the C/C++ preprocessor to use the specified directories for header files.
 # This is useful when building software that depends on non-standard header locations, like zlib and bzip2 in this case.
-export CPPFLAGS="-I/usr/local/opt/zlib/include -I/usr/local/opt/bzip2/include -I/opt/homebrew/opt/php@8.2/include"
+export CPPFLAGS="-I/usr/local/opt/zlib/include -I/usr/local/opt/bzip2/include"
 
 # Local config
 [[ -f ~/.zshenv.local ]] && source ~/.zshenv.local

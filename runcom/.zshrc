@@ -1,11 +1,14 @@
-#
+# ------------------------------------------------------------------
 # .zshrc - loaded on interactive shells, after .zprofile
-#
+# ------------------------------------------------------------------
 
-# Load custom executable functions
+# Functions
 for function in $DOTFILES/zsh/functions/*; do
   source $function
 done
+
+# Aliases
+[[ -f "$DOTFILES/zsh/.aliases" ]] && source "$DOTFILES/zsh/.aliases"
 
 # Extra files in ~/.dotfiles/zsh/config/pre , ~/.dotfiles/zsh/config/ , and ~/.dotfiles/zsh/config/post
 # these are loaded first, second, and third, respectively.
@@ -44,13 +47,7 @@ source ~/.iterm2_shell_integration.zsh
 # Load nvm
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
 
-# Aliases
-[[ -f "$DOTFILES/zsh/.aliases" ]] && source "$DOTFILES/zsh/.aliases"
-
-# Local config
-[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local2
-
-# THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+# Local config overrides
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
 . "$HOME/.local/share/../bin/env"
