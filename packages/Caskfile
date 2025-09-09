@@ -8,7 +8,6 @@ cask 'bartender'
 cask 'cakebrew'
 cask 'carbon-copy-cloner'
 cask 'cleanshot'
-cask 'coteditor'
 cask 'devtoys'
 cask 'diffmerge'
 cask 'discord'
@@ -20,15 +19,15 @@ cask 'gpg-suite'
 cask 'google-chrome'
 cask 'hammerspoon'
 cask 'handbrake'
+cask 'insomnia' 									# HTTP and GraphQL Client
 cask 'iterm2'
 cask 'jetbrains-toolbox', args: { force: true }
 cask 'linearmouse'                                  # Pointer acceleration and speed more accurately
+cask 'localsend' 									# Securely share files with nearby devices
 cask 'nextcloud'
 cask 'nikitabobko/tap/aerospace' 					# i3-like tiling window manager for macOS
-cask 'notion'
+cask 'orcaslicer'									# G-code generator for 3D printers
 cask 'phpmon'
-cask 'podman-desktop'
-cask 'postman'
 cask 'qbittorrent'								# Peer to peer Bitorrent client
 cask 'raycast'
 cask 'rocket'									# Emoji picker makes typing emoji faster using Slack-style shortcuts
@@ -37,7 +36,7 @@ cask 'slack', args: { force: true }
 cask 'sublime-text'
 cask 'the-unarchiver'
 cask 'tower'
-cask 'transmission'
+cask 'transmission'					# Peer to peer Bitorrent client
 cask 'transmit'
 cask 'wezterm'							# Terminal Emulator
 cask 'visual-studio-code'

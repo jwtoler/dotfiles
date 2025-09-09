@@ -17,9 +17,9 @@ alias doc="$HOME/Documents"
 alias dow="$HOME/Downloads"
 alias dotfiles="cd $DOTFILES"
 alias library="cd $HOME/Library"
-alias pj="cd $HOME/Projects"
-alias personal="cd $HOME/Projects/personal"
-alias wk="cd $HOME/Projects/work"
+alias dev="cd $HOME/Development"
+alias per="cd $HOME/Development/Personal"
+alias wk="cd $HOME/Development/Work"
 
 # ------------------------------------------------------------------
 # Directory Listing
@@ -29,6 +29,7 @@ alias lf='eza -lf --icons=always --color=always | grep -v /'
 alias lh='eza -dl .* --group-directories-first --icons=always'
 alias ll='eza -al --group-directories-first --icons=always'
 alias ls='eza -a --icons=always'
+alias lss='eza -lah --total-size --sort=size --reverse'
 alias lt='eza --tree --level=2  --icons --git'
 
 # ------------------------------------------------------------------

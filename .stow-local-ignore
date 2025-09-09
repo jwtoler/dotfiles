@@ -1,4 +1,28 @@
-.DS_Store
-.stowrc
-README.md
-.*.old
+# Defaults
+RCS
+.+,v
+
+CVS
+\.\#.+       # CVS conflict files / emacs lock files
+\.cvsignore
+
+\.svn
+_darcs
+\.hg
+
+\.git
+\.gitignore
+
+.+~          # emacs backup files
+\#.*\#       # emacs autosave files
+
+^/README.*
+^/LICENSE.*
+^/COPYING
+
+
+# Custom stuff
+\.DS_Store
+^/macos.*$
+^/iterm2.*$
+^/checkout_dependencies\.sh$

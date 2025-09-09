@@ -6,6 +6,7 @@
     cfix = "!f() { git add -A && git commit -m \"fix: $@\"; }; f"
     cchore = "!f() { git add -A && git commit -m \"chore: $@\"; }; f"
     cref = "!f() { git add -A && git commit -m \"refactor: $@\"; }; f"
+    promote = "!appdev-tool git:promote"
 
 [core]
 	utocrlf = input  						          # Keep newlines as in input

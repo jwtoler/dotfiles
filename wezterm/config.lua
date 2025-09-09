@@ -114,6 +114,6 @@ config = {
       format = "mailto:$0",
     },
   },
-},
+}
 
 return config

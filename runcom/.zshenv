@@ -6,9 +6,8 @@
 export DOTFILES="$HOME/.dotfiles"
 
 # Themes (onedark or nord)
-export TMUX_THEME="nord"
 export NVIM_THEME="nord"
-export STARSHIP_THEME="nord"
+export STARSHIP_THEME="catppuccin_mocha"
 export WEZTERM_THEME="catppuccin"
 
 # Locale settings
@@ -22,9 +21,10 @@ export XDG_CACHE_HOME="$HOME/.cache"           # Cache files
 export XDG_DATA_HOME="$HOME/.local/share"      # Application data
 export XDG_STATE_HOME="$HOME/.local/state"     # Logs and state files
 
-# Editor
-export EDITOR="nvim"
-export VISUAL="nvim"
+# Set the editor to vim
+if [ -z "$EDITOR" ]; then
+    export EDITOR=$(which nvim)
+fi
 
 # Java needs to always keep the environment variable current
 export JAVA_HOME=$(/usr/libexec/java_home)
