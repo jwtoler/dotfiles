@@ -1,6 +1,7 @@
 tap 'buo/cask-upgrade'
 
 # Apps
+cask 'alt-tab'										# Enable Windows-like alt-tab
 cask 'appcleaner', args: { force: true }
 cask 'authy'
 cask 'balenaetcher'									# Flash OS images to SD cards & USB drives
@@ -9,7 +10,6 @@ cask 'cakebrew'
 cask 'carbon-copy-cloner'
 cask 'cleanshot'
 cask 'devtoys'
-cask 'diffmerge'
 cask 'discord'
 cask 'docker'
 cask 'dropbox'
@@ -24,11 +24,11 @@ cask 'iterm2'
 cask 'jetbrains-toolbox', args: { force: true }
 cask 'linearmouse'                                  # Pointer acceleration and speed more accurately
 cask 'localsend' 									# Securely share files with nearby devices
+cask 'menubarusb'									# Shows your USB connections/speed in menu bar
 cask 'nextcloud'
 cask 'nikitabobko/tap/aerospace' 					# i3-like tiling window manager for macOS
 cask 'orcaslicer'									# G-code generator for 3D printers
 cask 'phpmon'
-cask 'qbittorrent'								# Peer to peer Bitorrent client
 cask 'raycast'
 cask 'rocket'									# Emoji picker makes typing emoji faster using Slack-style shortcuts
 cask 'sequel-ace', args: { force: true }
@@ -47,11 +47,6 @@ cask 'zoom'
 # Tools
 cask 'android-commandlinetools'    					# Command-line tools for building and debugging Android apps
 cask 'temurin' 						        		# Java SE build based upon OpenJDK
-
-
-# Quicklook
-cask 'qlmarkdown'
-cask 'quicklook-json'
 
 
 # Fonts

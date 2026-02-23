@@ -22,3 +22,14 @@ function tk() {
 function tka() {
   tmux ls | cut -d : -f 1 | xargs -I {} tmux kill-session -t {}
 }
+
+# SSH helper function with iterm integration w/ tmux
+function tmssh () {
+  if [[ -z "$1" ]]; then
+    me="${FUNCNAME[0]}${funcstack[1]}"
+    echo "usage: $me [ssh-args] hostname"
+    return 1
+  fi
+
+  ssh "$@" -t 'tmux -CC new -A -s tmssh'
+}

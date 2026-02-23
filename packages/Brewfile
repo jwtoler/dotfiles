@@ -1,10 +1,12 @@
 tap 'FelixKratz/formulae'
 tap 'homebrew/bundle'
+tap 'iina/homebrew-mpv-iina'
 tap 'jesseduffield/lazygit'
 tap 'koekeishiya/formulae'
 tap 'minacle/chntpw/chntpw'
 tap 'nicoverbruggen/homebrew-cask'
-tap 'iina/homebrew-mpv-iina'
+tap 'rafaelswi/menubarusb'
+
 
 # Core
 brew 'bats-core'

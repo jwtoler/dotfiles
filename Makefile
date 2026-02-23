@@ -58,6 +58,7 @@ link: stow-$(OS)
 	@$(BIN)/stow -t $(HOME) runcom
 	@$(BIN)/stow -t $(HOME) git
 	@$(BIN)/stow -t $(HOME) mackup
+	@$(BIN)/stow -t $(HOME)/.gnupg gnupg
 	@$(BIN)/stow -t $(HOME)/.hammerspoon hammerspoon
 	@$(BIN)/stow -t $(HOME)/.config topgrade
 	@$(BIN)/stow -t $(HOME)/.config/borders borders
@@ -70,6 +71,7 @@ unlink: stow-$(OS)
 	@$(BIN)/stow --delete -t $(HOME) runcom
 	@$(BIN)/stow --delete -t $(HOME) git
 	@$(BIN)/stow --delete -t $(HOME) mackup
+	@$(BIN)/stow --delete -t $(HOME)/.gnupg gnupg
 	@$(BIN)/stow --delete -t $(HOME)/.hammerspoon hammerspoon
 	@$(BIN)/stow --delete -t $(HOME)/.config topgrade
 	@$(BIN)/stow --delete -t $(HOME)/.config/borders borders

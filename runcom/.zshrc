@@ -44,10 +44,10 @@ _load_settings "$DOTFILES/zsh/config"
 # iTerm Integration
 source ~/.iterm2_shell_integration.zsh
 
+eval "$(zoxide init --cmd cd zsh)"
+
 # Load nvm
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
 
 # Local config overrides
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
-
-. "$HOME/.local/share/../bin/env"

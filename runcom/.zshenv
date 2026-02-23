@@ -5,7 +5,7 @@
 # Dotfiles path
 export DOTFILES="$HOME/.dotfiles"
 
-# Themes (onedark or nord)
+# Theme
 export NVIM_THEME="nord"
 export STARSHIP_THEME="catppuccin_mocha"
 export WEZTERM_THEME="catppuccin"
@@ -20,6 +20,14 @@ export XDG_CONFIG_HOME="$HOME/.config"         # Config files
 export XDG_CACHE_HOME="$HOME/.cache"           # Cache files
 export XDG_DATA_HOME="$HOME/.local/share"      # Application data
 export XDG_STATE_HOME="$HOME/.local/state"     # Logs and state files
+
+# Set LDFLAGS environment variable for the linker to use the specified directories for library files.
+# This is useful when building software that depends on non-standard library locations, like zlib and bzip2 in this case.
+export LDFLAGS="-L/usr/local/opt/zlib/lib -L/usr/local/opt/bzip2/lib"
+
+# Set CPPFLAGS environment variable for the C/C++ preprocessor to use the specified directories for header files.
+# This is useful when building software that depends on non-standard header locations, like zlib and bzip2 in this case.
+export CPPFLAGS="-I/usr/local/opt/zlib/include -I/usr/local/opt/bzip2/include"
 
 # Set the editor to vim
 if [ -z "$EDITOR" ]; then
@@ -41,7 +49,7 @@ export HOMEBREW_PREFIX=$($DOTFILES/bin/is-supported $DOTFILES/bin/is-arm64 /opt/
 export NVM_DIR="$HOME/.nvm"
 
 # Python Shims
-export PYENV_ROOT=$($HOMEBREW_PREFIX/bin/pyenv root)
+# export PYENV_ROOT=$($HOMEBREW_PREFIX/bin/pyenv root)
 
 # Java Manager
 export SDKMAN_DIR="$HOME/.sdkman"
@@ -52,14 +60,6 @@ export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 # Plugin: zoxide
 # Custom options to pass to fzf during interactive selection
 export _ZO_FZF_OPTS="$FZF_DEFAULT_OPTS --select-1 --exit-0"
-
-# Set LDFLAGS environment variable for the linker to use the specified directories for library files.
-# This is useful when building software that depends on non-standard library locations, like zlib and bzip2 in this case.
-export LDFLAGS="-L/usr/local/opt/zlib/lib -L/usr/local/opt/bzip2/lib"
-
-# Set CPPFLAGS environment variable for the C/C++ preprocessor to use the specified directories for header files.
-# This is useful when building software that depends on non-standard header locations, like zlib and bzip2 in this case.
-export CPPFLAGS="-I/usr/local/opt/zlib/include -I/usr/local/opt/bzip2/include"
 
 # Local config
 [[ -f ~/.zshenv.local ]] && source ~/.zshenv.local

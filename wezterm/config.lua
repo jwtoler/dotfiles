@@ -11,6 +11,10 @@ config = {
   default_cursor_style = "SteadyBar",
   automatically_reload_config = true,
 
+  -- Fonts
+  font = wezterm.font("JetBrains Mono"),
+  font_size = 16,
+
   -- Tab bar
   use_fancy_tab_bar = false,
   tab_bar_at_bottom = true,
@@ -19,41 +23,21 @@ config = {
   show_tab_index_in_tab_bar = false,
   tab_max_width = 100,
 
-  -- Fonts
-  font = wezterm.font("MesloLGS Nerd Font Mono"),
-  font_size = 12,
-
   -- Window
   window_close_confirmation = "NeverPrompt",
   adjust_window_size_when_changing_font_size = false,
+  window_background_opacity = 0.7,
   window_decorations = "RESIZE",
   window_padding = { left = 0, right = 0, top = 0, bottom = 0 },
-  macos_window_background_blur = 30,
-
-  -- Background
-  background = {
-    {
-      source = {
-        File = "/Users/" .. os.getenv("USER") .. "/.config/wezterm/dark-desert.jpg",
-      },
-      hsb = {
-        hue = 1.0,
-        saturation = 1.02,
-        brightness = 0.25,
-      },
-    },
-    {
-      source = {
-        Color = "#282c35",
-      },
-      width = "100%",
-      height = "100%",
-      opacity = 0.55,
-    },
-  },
+  macos_window_background_blur = 40,
 
   -- Keys
   keys = {
+    {
+      key = 'q',
+      mods = 'CTRL',
+      action = wezterm.action.ToggleFullScreen,
+    },
     {
       key = '\'',
       mods = 'CTRL',
@@ -68,50 +52,6 @@ config = {
       event = { Up = { streak = 1, button = 'Left' } },
       mods = 'CTRL',
       action = wezterm.action.OpenLinkAtMouseCursor,
-    },
-  },
-
-  --- URLs in Markdown files are not handled properly by default
-  -- Source: https://github.com/wez/wezterm/issues/3803#issuecomment-1608954312
-  hyperlink_rules = {
-    -- Matches: a URL in parens: (URL)
-    {
-      regex = "\\((\\w+://\\S+)\\)",
-      format = "$1",
-      highlight = 1,
-    },
-    -- Matches: a URL in brackets: [URL]
-    {
-      regex = "\\[(\\w+://\\S+)\\]",
-      format = "$1",
-      highlight = 1,
-    },
-    -- Matches: a URL in curly braces: {URL}
-    {
-      regex = "\\{(\\w+://\\S+)\\}",
-      format = "$1",
-      highlight = 1,
-    },
-    -- Matches: a URL in angle brackets: <URL>
-    {
-      regex = "<(\\w+://\\S+)>",
-      format = "$1",
-      highlight = 1,
-    },
-    -- Then handle URLs not wrapped in brackets
-    {
-      -- Before
-      --regex = '\\b\\w+://\\S+[)/a-zA-Z0-9-]+',
-      --format = '$0',
-      -- After
-      regex = "[^(]\\b(\\w+://\\S+[)/a-zA-Z0-9-]+)",
-      format = "$1",
-      highlight = 1,
-    },
-    -- implicit mailto link
-    {
-      regex = "\\b\\w+@[\\w-]+(\\.[\\w-]+)+\\b",
-      format = "mailto:$0",
     },
   },
 }

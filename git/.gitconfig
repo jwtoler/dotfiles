@@ -18,6 +18,15 @@
 	whitespace = error						          # Show incorrect whitespaces as errors
 	excludesfile = /Users/justin/.gitignore-global
 
+[user]
+    signinkey = 703668BD
+
+[commit]
+    gpgSign = true
+
+[tag]
+    gpgSign = true
+
 [advice]
     addEmptyPathspec = false
     pushNonFastForward = false
@@ -103,3 +112,4 @@
 
 [include]
     path = ~/.gitconfig.local					             # Load local configs last to allow overrides
+

@@ -1,12 +1,11 @@
 [user]
   name = Justin Toler
-  email = 17133784+jwtoler@users.noreply.github.com
-  signingkey = ~/.ssh/id_ed25519.pub
+  email = jwtoler@gmail.com
+  signingkey = 2E78D640703668BD
 
-#[commit]
-#  gpgsign = true
+[commit]
+  gpgsign = true
 
-# This option requires git 2.23+ to work and you must annotate your tags,
-# although -m "" works if you want an empty message.
-#[tag]
-#  gpgSign = true
+# Requires git 2.23+, must annotate tags, -m "" for empty message.
+[tag]
+  gpgSign = true
