@@ -44,6 +44,7 @@ brew 'libpq'
 brew 'minacle/chntpw/chntpw'
 brew 'openssl'
 brew 'pam-reattach'
+brew 'pass'											# Unix password manager
 brew 'pcre2'
 brew 'pkg-config' 						              # https://github.com/driesvints/dotfiles/issues/20
 brew 'skhd'
