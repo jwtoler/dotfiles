@@ -19,7 +19,9 @@
 	excludesfile = /Users/justin/.gitignore-global
 
 [user]
-    signinkey = 703668BD
+  name = Justin Toler
+  email = jwtoler@gmail.com
+  signingkey = 2E78D640703668BD
 
 [commit]
     gpgSign = true
@@ -94,21 +96,7 @@
     context    = white
     whitespace = yellow reverse
 
-# URL shortcuts
-[url "git@github.com:"]
-    insteadOf = "gh:"
-[url "git@github.com:jwtoler/"]
-    insteadOf = "jwtoler:"
-[url "git@github.com:clt-appdev/"]
-    insteadOf = "uncc:"
-
 # User configs
-[includeIf "gitdir:~/.dotfiles/"]
-    path = .gitconfig-personal
-[includeIf "gitdir:~/.password-store/"]
-    path = .gitconfig-personal
-[includeIf "gitdir:~/Projects/personal/"]
-    path = .gitconfig-personal
 [includeIf "gitdir:~/Projects/work/"]
     path = .gitconfig-work
 
