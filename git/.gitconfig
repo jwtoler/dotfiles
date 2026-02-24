@@ -24,7 +24,7 @@
   signingkey = 2E78D640703668BD
 
 [commit]
-    gpgSign = true
+    gpgSign = false
 
 [tag]
     gpgSign = true
